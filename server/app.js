@@ -29,23 +29,6 @@ app.use("/api/announcements", announcementRoutes);
 app.use("/api/timetable",     timetableRoutes);
 app.use("/api/cafe",          cafeRoutes);
 
-app.get("/api/setup-db", async (req, res) => {
-    try {
-        const fs = require('fs');
-        const path = require('path');
-        const sql = fs.readFileSync(path.join(__dirname, 'config', 'railway_schema.sql'), 'utf8');
-        // Simple split for basic queries
-        const queries = sql.split(';').map(q => q.trim()).filter(Boolean);
-        for (let q of queries) {
-            await db.query(q);
-        }
-        res.send("Database Tables and Seed Data Created Successfully!");
-    } catch (err) {
-        console.error(err);
-        res.status(500).send("SQL Error: " + err.message);
-    }
-});
-
 app.get("/api/health", async (req, res) => {
     try {
         await db.query("SELECT 1 AS ok");
