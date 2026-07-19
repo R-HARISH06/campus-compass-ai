@@ -54,6 +54,10 @@ async function factoryReset() {
     console.log("Running seed_cafe.js...");
     execSync('node seed_cafe.js', { cwd: __dirname });
 
+    // 8. Run Demo Accounts Seeder
+    console.log("Running seed_demo_accounts.js...");
+    execSync('node seed_demo_accounts.js', { cwd: __dirname });
+
     console.log("Factory Reset Complete!");
     process.exit(0);
   } catch (err) {
