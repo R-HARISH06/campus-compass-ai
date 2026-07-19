@@ -1,6 +1,4 @@
 -- Faculty seed data — from saranathan.ac.in (Phase 1)
-USE campus_compass_ai;
-
 -- Clear existing faculty data before re-seeding
 DELETE FROM faculty;
 

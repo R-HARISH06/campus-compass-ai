@@ -18,7 +18,8 @@ async function factoryReset() {
     console.log("Tables truncated.");
 
     // 2. Run railway_schema.sql to re-seed events and clubs
-    const schemaSql = fs.readFileSync(path.join(__dirname, 'railway_schema.sql'), 'utf8');
+    let schemaSql = fs.readFileSync(path.join(__dirname, 'railway_schema.sql'), 'utf8');
+    schemaSql = schemaSql.split('\n').filter(line => !line.trim().startsWith('--')).join('\n');
     const schemaQueries = schemaSql.split(';').map(q => q.trim()).filter(Boolean);
     for(let q of schemaQueries) {
       await pool.query(q);
@@ -30,7 +31,8 @@ async function factoryReset() {
     await pool.query('TRUNCATE TABLE faculty');
     
     // 4. Run seed_faculty.sql
-    const facultySql = fs.readFileSync(path.join(__dirname, 'seed_faculty.sql'), 'utf8');
+    let facultySql = fs.readFileSync(path.join(__dirname, 'seed_faculty.sql'), 'utf8');
+    facultySql = facultySql.split('\n').filter(line => !line.trim().startsWith('--')).join('\n');
     const facultyQueries = facultySql.split(';').map(q => q.trim()).filter(Boolean);
     for(let q of facultyQueries) {
       await pool.query(q);
