@@ -1,20 +1,37 @@
-const { initializeApp, getApps, cert } = require("firebase-admin/app");
-const { getMessaging } = require("firebase-admin/messaging");
-const serviceAccount = require("./firebaseAdmin.json");
+const admin = require("firebase-admin");
 
-if (getApps().length === 0) {
-  try {
-    initializeApp({
-      credential: cert(serviceAccount)
-    });
-    console.log("Firebase Admin SDK initialized successfully.");
-  } catch (err) {
-    console.error("Firebase Admin SDK initialization error:", err);
+let serviceAccount;
+try {
+  // Try to load from local file (development)
+  serviceAccount = require("./firebaseAdmin.json");
+} catch (error) {
+  // Fallback to environment variable (production on Render)
+  if (process.env.FIREBASE_ADMIN_JSON) {
+    try {
+      serviceAccount = JSON.parse(process.env.FIREBASE_ADMIN_JSON);
+    } catch (parseError) {
+      console.error("Failed to parse FIREBASE_ADMIN_JSON environment variable");
+    }
   }
 }
 
+if (serviceAccount) {
+  try {
+    admin.initializeApp({
+      credential: admin.credential.cert(serviceAccount)
+    });
+    console.log("Firebase Admin Initialized successfully.");
+  } catch (error) {
+    if (!/already exists/.test(error.message)) {
+      console.error("Firebase admin initialization error", error.stack);
+    }
+  }
+} else {
+  console.warn("WARNING: Firebase Admin credentials not found. Push notifications will not work.");
+}
+
 const sendPush = async (message) => {
-  return await getMessaging().sendEachForMulticast(message);
+  return await admin.messaging().sendEachForMulticast(message);
 };
 
 module.exports = { sendPush };
