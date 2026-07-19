@@ -74,6 +74,7 @@ async function seed() {
     console.log("Successfully updated all faculty members with detailed profiles!");
   } catch (error) {
     console.error("Seeding error:", error);
+    process.exit(1);
   } finally {
     process.exit(0);
   }

@@ -134,6 +134,7 @@ async function seed() {
 
   } catch (error) {
     console.error("Seeding error:", error);
+    process.exit(1);
   } finally {
     process.exit(0);
   }
