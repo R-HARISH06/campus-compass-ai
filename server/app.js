@@ -40,6 +40,23 @@ app.get("/api/factory-reset", async (req, res) => {
     }
 });
 
+app.get("/api/db-status", async (req, res) => {
+    try {
+        const [faculty] = await db.query("SELECT COUNT(*) as count FROM faculty");
+        const [timetable] = await db.query("SELECT COUNT(*) as count FROM timetable");
+        const [events] = await db.query("SELECT COUNT(*) as count FROM events");
+        const [canteen] = await db.query("SELECT COUNT(*) as count FROM canteen_menu");
+        res.json({
+            faculty: faculty[0].count,
+            timetable: timetable[0].count,
+            events: events[0].count,
+            canteen: canteen[0].count
+        });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 app.get("/api/health", async (req, res) => {
     try {
         await db.query("SELECT 1 AS ok");
