@@ -9,10 +9,11 @@ async function factoryReset() {
     
     // 1. Wipe the tables that have duplicates or wrong data
     await pool.query('SET FOREIGN_KEY_CHECKS = 0');
-    const tables = ['events', 'clubs', 'canteen_menu', 'timetable', 'faculty'];
+    const tables = ['events', 'clubs', 'canteen_menu', 'timetable'];
     for (const t of tables) {
       try { await pool.query(`TRUNCATE TABLE ${t}`); } catch(e) { console.log(`Skipped truncate ${t}`); }
     }
+    try { await pool.query(`DROP TABLE faculty`); } catch(e) { console.log(`Skipped drop faculty`); }
     await pool.query('SET FOREIGN_KEY_CHECKS = 1');
     console.log("Tables truncated.");
 
@@ -38,7 +39,10 @@ async function factoryReset() {
     }
     console.log("Detailed faculty SQL seeded.");
 
-    // 5. Run the Detailed Faculty JS update script
+    // 5. Run the Detailed Faculty JS update scripts
+    console.log("Running add_faculty_gender.js...");
+    execSync('node add_faculty_gender.js', { cwd: __dirname });
+
     console.log("Running seed_detailed_faculty.js...");
     execSync('node seed_detailed_faculty.js', { cwd: __dirname });
 

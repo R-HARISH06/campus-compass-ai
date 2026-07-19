@@ -1,12 +1,7 @@
 const mysql = require('mysql2/promise');
 const { execSync } = require('child_process');
 
-const dbConfig = {
-  host: 'localhost',
-  user: 'root',
-  password: 'Harish@123',
-  database: 'campus_compass_ai'
-};
+const pool = require('./db');
 
 const additionalFaculty = [
   // AIDS
@@ -61,8 +56,8 @@ function inferGender(name) {
   return 'Male'; // default
 }
 
-async function run() {
-  const connection = await mysql.createConnection(dbConfig);
+async function updateGender() {
+  const connection = pool;
   try {
     try {
       await connection.query("ALTER TABLE faculty ADD COLUMN gender VARCHAR(10) DEFAULT 'Male'");
@@ -87,16 +82,15 @@ async function run() {
       const g = inferGender(f.name);
       await connection.query("UPDATE faculty SET gender = ? WHERE id = ?", [g, f.id]);
     }
-    console.log("Updated genders for all faculty.");
-
+    console.log("Gender update and additional faculty insertion complete!");
+    
+    // We do NOT run seed_detailed_faculty.js here because factory_reset.js handles it sequentially
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Error updating gender:", error);
+    process.exit(1);
   } finally {
-    await connection.end();
+    process.exit(0);
   }
-
-  console.log("Running detailed seeder to populate missing education/projects for new faculty...");
-  execSync('node config/seed_detailed_faculty.js', { stdio: 'inherit' });
 }
 
-run();
+updateGender();

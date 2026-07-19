@@ -107,10 +107,15 @@ CREATE TABLE IF NOT EXISTS faculty (
     qualification    VARCHAR(150),
     designation      VARCHAR(100),  -- 'Professor & Head' | 'Professor' | 'Associate Professor' | 'Assistant Professor'
     department       VARCHAR(20)   NOT NULL,  -- dept code: 'CSE','IT','ECE','EEE','AIDS','AIML','MECH','MBA','CE','ICE'
-    email            VARCHAR(254),
-    office_hours     VARCHAR(150)  DEFAULT NULL,
-    subjects_handled VARCHAR(400)  DEFAULT NULL,
-    is_hod           BOOLEAN       DEFAULT FALSE
+    email             VARCHAR(254),
+    office_hours      VARCHAR(150)  DEFAULT NULL,
+    subjects_handled  VARCHAR(400)  DEFAULT NULL,
+    is_hod            BOOLEAN       DEFAULT FALSE,
+    gender            VARCHAR(20)   DEFAULT NULL,
+    education_history TEXT          DEFAULT NULL,
+    experience        VARCHAR(150)  DEFAULT NULL,
+    area_of_expertise VARCHAR(255)  DEFAULT NULL,
+    projects          TEXT          DEFAULT NULL
 );
 
 -- ============================================================
