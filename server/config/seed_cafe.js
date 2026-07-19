@@ -63,3 +63,6 @@ async function seedCafeMenu() {
 }
 
 seedCafeMenu();
+
+
+process.exit(0);

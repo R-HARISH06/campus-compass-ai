@@ -140,3 +140,6 @@ async function seed() {
 }
 
 seed();
+
+
+process.exit(0);
