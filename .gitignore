@@ -1,0 +1,15 @@
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+firebaseAdmin.json
+server/config/firebaseAdmin.json
+
+# Dependencies and generated output
+node_modules/
+client/build/
+coverage/
+
+# Local tooling
+.vscode/
+npm-debug.log*
