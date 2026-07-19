@@ -135,11 +135,8 @@ async function seed() {
   } catch (error) {
     console.error("Seeding error:", error);
   } finally {
-    /* await connection.end(); */
+    process.exit(0);
   }
 }
 
 seed();
-
-
-process.exit(0);
