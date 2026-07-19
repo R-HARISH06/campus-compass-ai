@@ -114,7 +114,7 @@ async function seed() {
             const room = getRandomItem(rooms);
 
             inserts.push([
-              dept, year, day, period.start, period.end, subject, String(faculty.id), room, period.slot, faculty.name
+              dept, year, day, period.slot, subject, faculty.name, room
             ]);
           }
         }
@@ -125,7 +125,7 @@ async function seed() {
     for (let i = 0; i < inserts.length; i += batchSize) {
       const batch = inserts.slice(i, i + batchSize);
       await connection.query(
-        "INSERT INTO timetable (department, year, day, start_time, end_time, subject, faculty, room, time_slot, faculty_name) VALUES ?",
+        "INSERT INTO timetable (department, year, day, time_slot, subject, faculty_name, room) VALUES ?",
         [batch]
       );
     }

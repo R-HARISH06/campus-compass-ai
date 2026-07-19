@@ -9,11 +9,10 @@ async function factoryReset() {
     
     // 1. Wipe the tables that have duplicates or wrong data
     await pool.query('SET FOREIGN_KEY_CHECKS = 0');
-    await pool.query('TRUNCATE TABLE events');
-    await pool.query('TRUNCATE TABLE clubs');
-    await pool.query('TRUNCATE TABLE canteen_menu');
-    await pool.query('TRUNCATE TABLE timetable');
-    await pool.query('TRUNCATE TABLE faculty');
+    const tables = ['events', 'clubs', 'canteen_menu', 'timetable', 'faculty'];
+    for (const t of tables) {
+      try { await pool.query(`TRUNCATE TABLE ${t}`); } catch(e) { console.log(`Skipped truncate ${t}`); }
+    }
     await pool.query('SET FOREIGN_KEY_CHECKS = 1');
     console.log("Tables truncated.");
 
@@ -27,8 +26,8 @@ async function factoryReset() {
     console.log("Base schema and events/clubs seeded.");
 
     // 3. railway_schema.sql inserts BAD faculty and BAD timetable. We wipe them again!
-    await pool.query('TRUNCATE TABLE timetable');
-    await pool.query('TRUNCATE TABLE faculty');
+    try { await pool.query('TRUNCATE TABLE timetable'); } catch(e) {}
+    try { await pool.query('TRUNCATE TABLE faculty'); } catch(e) {}
     
     // 4. Run seed_faculty.sql
     let facultySql = fs.readFileSync(path.join(__dirname, 'seed_faculty.sql'), 'utf8');
