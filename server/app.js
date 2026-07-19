@@ -16,21 +16,8 @@ const announcementRoutes = require("./routes/announcementRoutes");
 const timetableRoutes = require("./routes/timetableRoutes");
 const cafeRoutes = require("./routes/cafeRoutes");
 
-const allowedOrigins = (process.env.CLIENT_URL || "http://localhost:3000")
-    .split(",")
-    .map((origin) => origin.trim())
-    .filter(Boolean);
-
-app.use(cors({
-    origin: (origin, callback) => {
-        if (!origin || allowedOrigins.includes(origin)) {
-            return callback(null, true);
-        }
-        const error = new Error("Origin is not allowed by CORS");
-        error.status = 403;
-        return callback(error);
-    }
-}));
+// Allow all origins for the hackathon deployment to prevent Vercel CORS blocking
+app.use(cors());
 app.use(express.json({ limit: "100kb" }));
 app.use("/api/events",        eventRoutes);
 app.use("/api/clubs",         clubRoutes);
