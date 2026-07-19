@@ -1,11 +1,7 @@
 const mysql = require('mysql2/promise');
 
-const dbConfig = {
-  host: 'localhost',
-  user: 'root',
-  password: 'Harish@123',
-  database: 'campus_compass_ai'
-};
+const pool = require('./db');
+
 
 const periods = [
   { slot: 'Period 1', start: '09:15:00', end: '10:05:00' },
@@ -80,7 +76,7 @@ function getRandomItem(arr) {
 }
 
 async function seed() {
-  const connection = await mysql.createConnection(dbConfig);
+  const connection = pool;
   try {
     console.log("Clearing existing timetable...");
     await connection.query("TRUNCATE TABLE timetable");
@@ -139,7 +135,7 @@ async function seed() {
   } catch (error) {
     console.error("Seeding error:", error);
   } finally {
-    await connection.end();
+    /* await connection.end(); */
   }
 }
 

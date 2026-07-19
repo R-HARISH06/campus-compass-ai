@@ -1,11 +1,7 @@
 const mysql = require('mysql2/promise');
 
-const dbConfig = {
-  host: 'localhost',
-  user: 'root',
-  password: 'Harish@123',
-  database: 'campus_compass_ai'
-};
+const pool = require('./db');
+
 
 const domains = {
   CSE: ['Machine Learning', 'Data Mining', 'Artificial Intelligence', 'Cloud Computing', 'Computer Networks', 'Software Engineering'],
@@ -51,7 +47,7 @@ function generateExperience(designation) {
 }
 
 async function seed() {
-  const connection = await mysql.createConnection(dbConfig);
+  const connection = pool;
   try {
     console.log("Fetching faculty...");
     const [facultyList] = await connection.query("SELECT id, department, qualification, designation FROM faculty");
@@ -79,7 +75,7 @@ async function seed() {
   } catch (error) {
     console.error("Seeding error:", error);
   } finally {
-    await connection.end();
+    /* await connection.end(); */
   }
 }
 

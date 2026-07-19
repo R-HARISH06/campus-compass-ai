@@ -29,6 +29,32 @@ app.use("/api/announcements", announcementRoutes);
 app.use("/api/timetable",     timetableRoutes);
 app.use("/api/cafe",          cafeRoutes);
 
+app.get("/api/restore-data", async (req, res) => {
+    try {
+        const { execSync } = require('child_process');
+        
+        // 1. Wipe and Restore Faculty using the detailed SQL script
+        const fs = require('fs');
+        const path = require('path');
+        const sql = fs.readFileSync(path.join(__dirname, 'config', 'seed_faculty.sql'), 'utf8');
+        const queries = sql.split(';').map(q => q.trim()).filter(Boolean);
+        for(let q of queries) {
+            await db.query(q);
+        }
+
+        // 2. Run the Timetable JS script
+        execSync('node config/seed_timetable.js', { cwd: __dirname });
+        
+        // 3. Run the Detailed Faculty update script
+        execSync('node config/seed_detailed_faculty.js', { cwd: __dirname });
+
+        res.send("Old Faculty & Timetable Data Restored Successfully!");
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Error: " + (err.stderr ? err.stderr.toString() : err.message));
+    }
+});
+
 app.get("/api/health", async (req, res) => {
     try {
         await db.query("SELECT 1 AS ok");
