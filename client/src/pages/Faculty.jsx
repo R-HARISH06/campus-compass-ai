@@ -48,42 +48,6 @@ function Faculty() {
     setSelectedFaculty(null);
   };
 
-  const getAvatar = (name) => {
-    const n = name.toLowerCase();
-    
-    // Simple hash function to deterministically assign an avatar based on name
-    let hash = 0;
-    for (let i = 0; i < n.length; i++) {
-      hash = n.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    hash = Math.abs(hash);
-
-    const renderImage = (src) => (
-      <img 
-        src={src} 
-        alt="Faculty" 
-        className="rounded-circle shadow-sm mb-3" 
-        style={{ width: '120px', height: '120px', objectFit: 'cover', border: '4px solid rgba(255,255,255,0.1)' }} 
-      />
-    );
-
-    const maleImages = ["/images/faculty_male.png", "/images/faculty_male_2.png", "/images/faculty_male_3.png"];
-    const femaleImages = ["/images/faculty_female.png", "/images/faculty_female_2.png", "/images/faculty_female_3.png"];
-    
-    const getMaleImg = () => maleImages[hash % maleImages.length];
-    const getFemaleImg = () => femaleImages[hash % femaleImages.length];
-
-    if (n.startsWith("mr.")) return renderImage(getMaleImg());
-    if (n.startsWith("ms.") || n.startsWith("mrs.")) return renderImage(getFemaleImg());
-    
-    // Simple heuristic for Dr. names in our dataset
-    const femaleNames = ['punitha', 'senthamil', 'mohana', 'rajalakshmi', 'rachel', 'maria', 'shapna', 'roshini', 'sathya', 'parkavi', 'mohanappriya', 'ramya', 'rohini', 'sugantha', 'nagalakshmi', 'kavitha', 'revathi', 'geetha', 'nandhini', 'sandhya', 'meena', 'swathi', 'vimala', 'priya', 'lakshmi', 'divya', 'anitha', 'delphin'];
-    for (let fn of femaleNames) {
-      if (n.includes(fn)) return renderImage(getFemaleImg());
-    }
-    return renderImage(getMaleImg()); // default
-  };
-
   return (
     <div className="container mt-5 pt-5">
       <div className="text-center mb-5 animate-fade-in-up">
@@ -114,7 +78,6 @@ function Faculty() {
           <div className="col-md-4" key={index}>
             <div className={`card text-center h-100 py-4 hover-scale animate-fade-in-up delay-${(index % 4) + 1}`}>
               <div className="card-body">
-                <div className="display-4 mb-3">{getAvatar(item.name)}</div>
                 <h2 className="card-title h4 fw-bold">{item.name} {item.is_hod ? "⭐ (HOD)" : ""}</h2>
                 <p className="text-muted mb-1"><strong className="text-light">Department:</strong> {item.department}</p>
                 <p className="text-muted mb-1"><strong className="text-light">Designation:</strong> {item.designation}</p>
@@ -142,7 +105,6 @@ function Faculty() {
           {selectedFaculty && (
             <div>
               <div className="text-center mb-4">
-                <div className="display-1 mb-2">{getAvatar(selectedFaculty.name)}</div>
                 <h4 className="fw-bold gradient-text">{selectedFaculty.designation}</h4>
                 <p className="text-muted">{selectedFaculty.department} Department {selectedFaculty.is_hod ? "• HOD" : ""}</p>
               </div>
