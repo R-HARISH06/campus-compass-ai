@@ -22,8 +22,8 @@ function Admissions() {
                   <div className="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center fw-bold" style={{width: '40px', height: '40px'}}>1</div>
                 </div>
                 <div>
-                  <h4 className="fw-bold text-light">Create an Account</h4>
-                  <p className="text-muted">Start by creating an account on our <Link to="/signup" className="text-primary text-decoration-none">Sign Up page</Link>. Select "Student" and fill in your basic details, department, and expected year of graduation.</p>
+                  <h4 className="fw-bold text-light">Visit the Official College Website</h4>
+                  <p className="text-muted">All admission registrations begin on our <strong>official college website</strong>. Create your applicant account there to fill in your basic details, department, and expected year of graduation. (This AI app is only for viewing information!)</p>
                 </div>
               </div>
 
@@ -33,7 +33,7 @@ function Admissions() {
                 </div>
                 <div>
                   <h4 className="fw-bold text-light">Submit Documents</h4>
-                  <p className="text-muted">Once logged in, navigate to your Student Profile to upload your previous academic transcripts, standardized test scores, and ID proof.</p>
+                  <p className="text-muted">On the official college website portal, upload your previous academic transcripts, standardized test scores, and ID proof for verification.</p>
                 </div>
               </div>
 
@@ -43,7 +43,7 @@ function Admissions() {
                 </div>
                 <div>
                   <h4 className="fw-bold text-light">Pay Application Fee</h4>
-                  <p className="text-muted">Please note that all fee payments must be made exclusively through our <strong>official college website</strong>. This portal is only for viewing admission details and tracking your application status.</p>
+                  <p className="text-muted">Pay the non-refundable processing fee of $50 via the secure payment gateway on the <strong>official college website</strong> to confirm your application submission.</p>
                 </div>
               </div>
 
@@ -53,7 +53,7 @@ function Admissions() {
                 </div>
                 <div>
                   <h4 className="fw-bold text-light">Receive Admission Offer</h4>
-                  <p className="text-muted">The admissions committee will review your profile. You will be notified via email and your student dashboard within 2-3 weeks. Once accepted, you can pay your semester fees on the official college website and pick your courses!</p>
+                  <p className="text-muted">The admissions committee will review your profile. You will be notified via email within 2-3 weeks. Once accepted, you can pay your semester fees on the official college website and pick your courses!</p>
                 </div>
               </div>
             </Card.Body>
