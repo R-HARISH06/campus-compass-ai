@@ -14,12 +14,19 @@ function Signup() {
   const [department, setDepartment] = useState("");
   const [year, setYear] = useState("");
   const [role, setRole] = useState("student");
+  const [adminCode, setAdminCode] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    
+    if (role !== "student" && adminCode !== "CAMPUS2026") {
+      setError("Invalid Secret Admin Code. Please check the code or sign up as a Student.");
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -106,6 +113,8 @@ function Signup() {
                       if (e.target.value !== "student") {
                         setDepartment("");
                         setYear("");
+                      } else {
+                        setAdminCode("");
                       }
                     }}
                   >
@@ -116,6 +125,20 @@ function Signup() {
                     <option value="master_admin">Admin</option>
                   </Form.Select>
                 </Form.Group>
+
+                {role !== "student" && (
+                  <Form.Group className="mb-4" controlId="formSignupAdminCode">
+                    <Form.Label className="text-light">Secret Admin Code</Form.Label>
+                    <Form.Control
+                      type="password"
+                      placeholder="Required for non-student roles"
+                      className="bg-dark text-light border-secondary"
+                      value={adminCode}
+                      onChange={(e) => setAdminCode(e.target.value)}
+                      required
+                    />
+                  </Form.Group>
+                )}
 
                 {role === "student" && (
                   <Row>
