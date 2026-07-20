@@ -91,9 +91,6 @@ function Admissions() {
                   </tr>
                 </tbody>
               </Table>
-              <div className="alert alert-info bg-primary bg-opacity-10 text-info border-info border-opacity-25" role="alert">
-                <strong>Note:</strong> Financial aid and scholarships are available for eligible students. Check your profile dashboard after enrollment.
-              </div>
             </Card.Body>
           </Card>
         </Col>
