@@ -179,7 +179,6 @@ function Events() {
                     <strong className="text-light">📅 Date:</strong> {event.date}
                   </p>
                 </div>
-                </div>
                 <div className="mt-4 text-end">
                   {!user ? (
                     <Button
