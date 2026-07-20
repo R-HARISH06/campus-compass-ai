@@ -19,6 +19,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import AiAssistant from "./pages/AiAssistant";
 import Timetable from "./pages/Timetable";
 import Announcements from "./pages/Announcements";
+import Admissions from "./pages/Admissions";
 
 // Protected route: must be logged in
 const ProtectedRoute = ({ children, adminOnly = false }) => {
@@ -46,6 +47,7 @@ function AppRoutes() {
             <Route path="/canteen" element={<PageWrapper><CanteenMenu /></PageWrapper>} />
             <Route path="/map" element={<PageWrapper><CampusMap /></PageWrapper>} />
             <Route path="/faculty" element={<PageWrapper><Faculty /></PageWrapper>} />
+            <Route path="/admissions" element={<PageWrapper><Admissions /></PageWrapper>} />
             <Route path="/announcements" element={<PageWrapper><Announcements /></PageWrapper>} />
             <Route path="/login" element={<PageWrapper><Login /></PageWrapper>} />
             <Route path="/signup" element={<PageWrapper><Signup /></PageWrapper>} />

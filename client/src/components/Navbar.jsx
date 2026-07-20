@@ -25,6 +25,7 @@ function Navbar() {
             
             {(!user || user.role !== 'cafe_owner') && (
               <NavDropdown title="Academics" id="academics-dropdown" menuVariant="dark">
+                <NavDropdown.Item as={Link} to="/admissions">Admissions</NavDropdown.Item>
                 <NavDropdown.Item as={Link} to="/timetable">Timetable</NavDropdown.Item>
                 <NavDropdown.Item as={Link} to="/faculty">Faculty</NavDropdown.Item>
               </NavDropdown>
