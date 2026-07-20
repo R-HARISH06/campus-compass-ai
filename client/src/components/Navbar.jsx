@@ -23,17 +23,23 @@ function Navbar() {
           <Nav className="ms-auto align-items-center">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
             
-            <NavDropdown title="Academics" id="academics-dropdown" menuVariant="dark">
-              <NavDropdown.Item as={Link} to="/timetable">Timetable</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/faculty">Faculty</NavDropdown.Item>
-            </NavDropdown>
+            {(!user || user.role !== 'cafe_owner') && (
+              <NavDropdown title="Academics" id="academics-dropdown" menuVariant="dark">
+                <NavDropdown.Item as={Link} to="/timetable">Timetable</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/faculty">Faculty</NavDropdown.Item>
+              </NavDropdown>
+            )}
 
             <NavDropdown title="Campus" id="campus-dropdown" menuVariant="dark">
-              <NavDropdown.Item as={Link} to="/announcements">Announcements</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/events">Events</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/clubs">Clubs</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item as={Link} to="/map">Campus Map</NavDropdown.Item>
+              {(!user || user.role !== 'cafe_owner') && (
+                <>
+                  <NavDropdown.Item as={Link} to="/announcements">Announcements</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/events">Events</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/clubs">Clubs</NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item as={Link} to="/map">Campus Map</NavDropdown.Item>
+                </>
+              )}
               <NavDropdown.Item as={Link} to="/canteen">Canteen</NavDropdown.Item>
             </NavDropdown>
 

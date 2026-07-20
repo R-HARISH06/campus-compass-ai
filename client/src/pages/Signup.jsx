@@ -13,6 +13,7 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [department, setDepartment] = useState("");
   const [year, setYear] = useState("");
+  const [role, setRole] = useState("student");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -25,7 +26,7 @@ function Signup() {
       const res = await fetch(`${API_BASE_URL}/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password, department, year: parseInt(year) || null }),
+        body: JSON.stringify({ name, email, password, department, year: parseInt(year) || null, role }),
       });
 
       const data = await res.json();
@@ -95,36 +96,59 @@ function Signup() {
                   />
                 </Form.Group>
 
-                <Row>
-                  <Col>
-                    <Form.Group className="mb-3" controlId="formSignupDept">
-                      <Form.Label className="text-light">Department</Form.Label>
-                      <Form.Control
-                        type="text"
-                        placeholder="e.g. CS, IT"
-                        className="bg-dark text-light border-secondary"
-                        value={department}
-                        onChange={(e) => setDepartment(e.target.value)}
-                      />
-                    </Form.Group>
-                  </Col>
-                  <Col>
-                    <Form.Group className="mb-4" controlId="formSignupYear">
-                      <Form.Label className="text-light">Year</Form.Label>
-                      <Form.Select
-                        className="bg-dark text-light border-secondary"
-                        value={year}
-                        onChange={(e) => setYear(e.target.value)}
-                      >
-                        <option value="">Select</option>
-                        <option value="1">1st Year</option>
-                        <option value="2">2nd Year</option>
-                        <option value="3">3rd Year</option>
-                        <option value="4">4th Year</option>
-                      </Form.Select>
-                    </Form.Group>
-                  </Col>
-                </Row>
+                <Form.Group className="mb-3" controlId="formSignupRole">
+                  <Form.Label className="text-light">Account Role</Form.Label>
+                  <Form.Select
+                    className="bg-dark text-light border-secondary"
+                    value={role}
+                    onChange={(e) => {
+                      setRole(e.target.value);
+                      if (e.target.value !== "student") {
+                        setDepartment("");
+                        setYear("");
+                      }
+                    }}
+                  >
+                    <option value="student">Student</option>
+                    <option value="faculty">Faculty</option>
+                    <option value="cafe_owner">Cafe Owner</option>
+                    <option value="club_admin">Club Admin</option>
+                    <option value="master_admin">Admin</option>
+                  </Form.Select>
+                </Form.Group>
+
+                {role === "student" && (
+                  <Row>
+                    <Col>
+                      <Form.Group className="mb-3" controlId="formSignupDept">
+                        <Form.Label className="text-light">Department</Form.Label>
+                        <Form.Control
+                          type="text"
+                          placeholder="e.g. CS, IT"
+                          className="bg-dark text-light border-secondary"
+                          value={department}
+                          onChange={(e) => setDepartment(e.target.value)}
+                        />
+                      </Form.Group>
+                    </Col>
+                    <Col>
+                      <Form.Group className="mb-4" controlId="formSignupYear">
+                        <Form.Label className="text-light">Year</Form.Label>
+                        <Form.Select
+                          className="bg-dark text-light border-secondary"
+                          value={year}
+                          onChange={(e) => setYear(e.target.value)}
+                        >
+                          <option value="">Select</option>
+                          <option value="1">1st Year</option>
+                          <option value="2">2nd Year</option>
+                          <option value="3">3rd Year</option>
+                          <option value="4">4th Year</option>
+                        </Form.Select>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                )}
 
                 <Button
                   variant="primary"

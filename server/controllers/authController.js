@@ -20,6 +20,7 @@ const register = async (req, res) => {
   const rawYear = body.year;
   const interests = typeof body.interests === "string" ? body.interests.trim() : null;
   const phone = typeof body.phone === "string" ? body.phone.trim() : null;
+  const role = typeof body.role === "string" && body.role ? body.role : "student";
 
   if (!name || !email || !password) {
     return res.status(400).json({ message: "Name, email, and password are required." });
@@ -50,12 +51,12 @@ const register = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 12);
     const [result] = await db.query(
-      "INSERT INTO users (name, email, password, department, year, interests, phone) VALUES (?, ?, ?, ?, ?, ?, ?)",
-      [name, email, hashedPassword, department || null, year, interests || null, phone || null]
+      "INSERT INTO users (name, email, password, department, year, interests, phone, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+      [name, email, hashedPassword, department || null, year, interests || null, phone || null, role]
     );
 
-    const user = { id: result.insertId, name, email, role: "student", department, year, interests, phone };
-    const token = jwt.sign({ id: user.id, name, email, role: "student" }, process.env.JWT_SECRET, { expiresIn: "7d" });
+    const user = { id: result.insertId, name, email, role: role, department, year, interests, phone };
+    const token = jwt.sign({ id: user.id, name, email, role: role }, process.env.JWT_SECRET, { expiresIn: "7d" });
 
     res.status(201).json({
       message: "Account created successfully!",

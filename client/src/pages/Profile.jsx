@@ -224,18 +224,22 @@ function Profile() {
             </div>
 
             <div className="row g-3">
-              <div className="col-md-6">
-                <div className="p-3 bg-secondary bg-opacity-25 rounded border border-secondary">
-                  <small className="text-muted d-block text-uppercase fw-bold mb-1">Department</small>
-                  <div className="fs-5">{fullUser?.department || "Not Specified"}</div>
+              {['student', 'faculty'].includes(fullUser?.role || user?.role) && (
+                <div className="col-md-6">
+                  <div className="p-3 bg-secondary bg-opacity-25 rounded border border-secondary">
+                    <small className="text-muted d-block text-uppercase fw-bold mb-1">Department</small>
+                    <div className="fs-5">{fullUser?.department || "Not Specified"}</div>
+                  </div>
                 </div>
-              </div>
-              <div className="col-md-6">
-                <div className="p-3 bg-secondary bg-opacity-25 rounded border border-secondary">
-                  <small className="text-muted d-block text-uppercase fw-bold mb-1">Year of Study</small>
-                  <div className="fs-5">{fullUser?.year ? `Year ${fullUser.year}` : "Not Specified"}</div>
+              )}
+              {['student'].includes(fullUser?.role || user?.role) && (
+                <div className="col-md-6">
+                  <div className="p-3 bg-secondary bg-opacity-25 rounded border border-secondary">
+                    <small className="text-muted d-block text-uppercase fw-bold mb-1">Year of Study</small>
+                    <div className="fs-5">{fullUser?.year ? `Year ${fullUser.year}` : "Not Specified"}</div>
+                  </div>
                 </div>
-              </div>
+              )}
               <div className="col-md-6">
                 <div className="p-3 bg-secondary bg-opacity-25 rounded border border-secondary">
                   <small className="text-muted d-block text-uppercase fw-bold mb-1">Phone Number</small>
@@ -265,8 +269,9 @@ function Profile() {
         </div>
       </div>
 
-      <div className="row animate-fade-in-up delay-2">
-        <div className="col-md-6 mb-4">
+      {['student'].includes(fullUser?.role || user?.role) && (
+        <div className="row animate-fade-in-up delay-2">
+          <div className="col-md-6 mb-4">
           <h3 className="fw-bold gradient-text">Registered Events</h3>
           {rsvpedEvents.length === 0 ? (
             <p className="text-muted">You haven't RSVPed to any events yet.</p>
@@ -317,7 +322,8 @@ function Profile() {
             </div>
           )}
         </div>
-      </div>
+        </div>
+      )}
 
       {/* Edit Profile Modal */}
       <Modal show={showEditModal} onHide={() => setShowEditModal(false)} centered contentClassName="bg-dark text-white border-secondary">
@@ -336,41 +342,45 @@ function Profile() {
                 className="bg-secondary text-white border-0"
               />
             </Form.Group>
-            <Row className="g-3 mb-3">
-              <Col md={6}>
-                <Form.Group>
-                  <Form.Label>Department</Form.Label>
-                  <Form.Select 
-                    value={editData.department} 
-                    onChange={(e) => setEditData({...editData, department: e.target.value})}
-                    className="bg-secondary text-white border-0"
-                  >
-                    <option value="">Select Dept</option>
-                    <option value="CSE">CSE</option>
-                    <option value="IT">IT</option>
-                    <option value="ECE">ECE</option>
-                    <option value="EEE">EEE</option>
-                    <option value="MECH">MECH</option>
-                  </Form.Select>
-                </Form.Group>
-              </Col>
-              <Col md={6}>
-                <Form.Group>
-                  <Form.Label>Year</Form.Label>
-                  <Form.Select 
-                    value={editData.year} 
-                    onChange={(e) => setEditData({...editData, year: e.target.value})}
-                    className="bg-secondary text-white border-0"
-                  >
-                    <option value="">Select Year</option>
-                    <option value="1">1st Year</option>
-                    <option value="2">2nd Year</option>
-                    <option value="3">3rd Year</option>
-                    <option value="4">4th Year</option>
-                  </Form.Select>
-                </Form.Group>
-              </Col>
-            </Row>
+            {['student', 'faculty'].includes(fullUser?.role || user?.role) && (
+              <Row className="g-3 mb-3">
+                <Col md={6}>
+                  <Form.Group>
+                    <Form.Label>Department</Form.Label>
+                    <Form.Select 
+                      value={editData.department} 
+                      onChange={(e) => setEditData({...editData, department: e.target.value})}
+                      className="bg-secondary text-white border-0"
+                    >
+                      <option value="">Select Dept</option>
+                      <option value="CSE">CSE</option>
+                      <option value="IT">IT</option>
+                      <option value="ECE">ECE</option>
+                      <option value="EEE">EEE</option>
+                      <option value="MECH">MECH</option>
+                    </Form.Select>
+                  </Form.Group>
+                </Col>
+                {['student'].includes(fullUser?.role || user?.role) && (
+                  <Col md={6}>
+                    <Form.Group>
+                      <Form.Label>Year</Form.Label>
+                      <Form.Select 
+                        value={editData.year} 
+                        onChange={(e) => setEditData({...editData, year: e.target.value})}
+                        className="bg-secondary text-white border-0"
+                      >
+                        <option value="">Select Year</option>
+                        <option value="1">1st Year</option>
+                        <option value="2">2nd Year</option>
+                        <option value="3">3rd Year</option>
+                        <option value="4">4th Year</option>
+                      </Form.Select>
+                    </Form.Group>
+                  </Col>
+                )}
+              </Row>
+            )}
             <Form.Group className="mb-3">
               <Form.Label>Phone Number</Form.Label>
               <Form.Control 
