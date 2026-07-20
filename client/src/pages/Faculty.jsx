@@ -50,15 +50,24 @@ function Faculty() {
 
   const getAvatar = (name) => {
     const n = name.toLowerCase();
-    if (n.startsWith("mr.")) return "👨‍🏫";
-    if (n.startsWith("ms.") || n.startsWith("mrs.")) return "👩‍🏫";
+    const renderImage = (src) => (
+      <img 
+        src={src} 
+        alt="Faculty" 
+        className="rounded-circle shadow-sm" 
+        style={{ width: '120px', height: '120px', objectFit: 'cover' }} 
+      />
+    );
+
+    if (n.startsWith("mr.")) return renderImage("/images/faculty_male.png");
+    if (n.startsWith("ms.") || n.startsWith("mrs.")) return renderImage("/images/faculty_female.png");
     
     // Simple heuristic for Dr. names in our dataset
     const femaleNames = ['punitha', 'senthamil', 'mohana', 'rajalakshmi', 'rachel', 'maria', 'shapna', 'roshini', 'sathya', 'parkavi', 'mohanappriya', 'ramya', 'rohini', 'sugantha', 'nagalakshmi', 'kavitha', 'revathi', 'geetha', 'nandhini', 'sandhya', 'meena', 'swathi', 'vimala', 'priya', 'lakshmi', 'divya', 'anitha', 'delphin'];
     for (let fn of femaleNames) {
-      if (n.includes(fn)) return "👩‍🏫";
+      if (n.includes(fn)) return renderImage("/images/faculty_female.png");
     }
-    return "👨‍🏫"; // default
+    return renderImage("/images/faculty_male.png"); // default
   };
 
   return (
