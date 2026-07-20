@@ -50,24 +50,38 @@ function Faculty() {
 
   const getAvatar = (name) => {
     const n = name.toLowerCase();
+    
+    // Simple hash function to deterministically assign an avatar based on name
+    let hash = 0;
+    for (let i = 0; i < n.length; i++) {
+      hash = n.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    hash = Math.abs(hash);
+
     const renderImage = (src) => (
       <img 
         src={src} 
         alt="Faculty" 
-        className="rounded-circle shadow-sm" 
-        style={{ width: '120px', height: '120px', objectFit: 'cover' }} 
+        className="rounded-circle shadow-sm mb-3" 
+        style={{ width: '120px', height: '120px', objectFit: 'cover', border: '4px solid rgba(255,255,255,0.1)' }} 
       />
     );
 
-    if (n.startsWith("mr.")) return renderImage("/images/faculty_male.png");
-    if (n.startsWith("ms.") || n.startsWith("mrs.")) return renderImage("/images/faculty_female.png");
+    const maleImages = ["/images/faculty_male.png", "/images/faculty_male_2.png", "/images/faculty_male_3.png"];
+    const femaleImages = ["/images/faculty_female.png", "/images/faculty_female_2.png", "/images/faculty_female_3.png"];
+    
+    const getMaleImg = () => maleImages[hash % maleImages.length];
+    const getFemaleImg = () => femaleImages[hash % femaleImages.length];
+
+    if (n.startsWith("mr.")) return renderImage(getMaleImg());
+    if (n.startsWith("ms.") || n.startsWith("mrs.")) return renderImage(getFemaleImg());
     
     // Simple heuristic for Dr. names in our dataset
     const femaleNames = ['punitha', 'senthamil', 'mohana', 'rajalakshmi', 'rachel', 'maria', 'shapna', 'roshini', 'sathya', 'parkavi', 'mohanappriya', 'ramya', 'rohini', 'sugantha', 'nagalakshmi', 'kavitha', 'revathi', 'geetha', 'nandhini', 'sandhya', 'meena', 'swathi', 'vimala', 'priya', 'lakshmi', 'divya', 'anitha', 'delphin'];
     for (let fn of femaleNames) {
-      if (n.includes(fn)) return renderImage("/images/faculty_female.png");
+      if (n.includes(fn)) return renderImage(getFemaleImg());
     }
-    return renderImage("/images/faculty_male.png"); // default
+    return renderImage(getMaleImg()); // default
   };
 
   return (
