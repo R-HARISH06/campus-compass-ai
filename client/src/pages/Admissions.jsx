@@ -43,7 +43,7 @@ function Admissions() {
                 </div>
                 <div>
                   <h4 className="fw-bold text-light">Pay Application Fee</h4>
-                  <p className="text-muted">Pay the non-refundable processing fee of $50 via our secure payment gateway to confirm your application submission.</p>
+                  <p className="text-muted">Please note that all fee payments must be made exclusively through our <strong>official college website</strong>. This portal is only for viewing admission details and tracking your application status.</p>
                 </div>
               </div>
 
@@ -53,7 +53,7 @@ function Admissions() {
                 </div>
                 <div>
                   <h4 className="fw-bold text-light">Receive Admission Offer</h4>
-                  <p className="text-muted">The admissions committee will review your profile. You will be notified via email and your student dashboard within 2-3 weeks. Once accepted, you can pay your semester fees and pick your courses!</p>
+                  <p className="text-muted">The admissions committee will review your profile. You will be notified via email and your student dashboard within 2-3 weeks. Once accepted, you can pay your semester fees on the official college website and pick your courses!</p>
                 </div>
               </div>
             </Card.Body>
@@ -116,7 +116,7 @@ function Admissions() {
                 <Accordion.Item eventKey="1" className="bg-dark border-secondary">
                   <Accordion.Header className="text-light">Do I need to pay the entire fee at once?</Accordion.Header>
                   <Accordion.Body className="text-muted">
-                    No! We offer flexible payment plans. You can pay in 3 installments throughout the semester. The first installment is due before course registration.
+                    No! We offer flexible payment plans. You can pay in 3 installments on the official college website. The first installment is due before course registration.
                   </Accordion.Body>
                 </Accordion.Item>
                 <Accordion.Item eventKey="2" className="bg-dark border-secondary">
