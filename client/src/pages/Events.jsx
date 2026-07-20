@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { Button, Spinner, Alert } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { API_BASE_URL, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, EMAILJS_PUBLIC_KEY } from "../config";
 
 function Events() {
   const { user, token } = useAuth();
+  const navigate = useNavigate();
   const [events, setEvents] = useState([]);
   const [rsvpedEvents, setRsvpedEvents] = useState([]);
   const [rsvpLoadingId, setRsvpLoadingId] = useState(null);
@@ -42,25 +44,29 @@ function Events() {
     try {
       // Check if EmailJS is configured
       if (EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY) {
-        const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            service_id: EMAILJS_SERVICE_ID,
-            template_id: EMAILJS_TEMPLATE_ID,
-            user_id: EMAILJS_PUBLIC_KEY,
-            template_params: {
-              to_name: user.name,
-              to_email: user.email,
-              event_title: event.title,
-              event_date: event.date,
-              event_venue: event.venue
-            }
-          })
-        });
+        try {
+          const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              service_id: EMAILJS_SERVICE_ID,
+              template_id: EMAILJS_TEMPLATE_ID,
+              user_id: EMAILJS_PUBLIC_KEY,
+              template_params: {
+                to_name: user.name,
+                to_email: user.email,
+                event_title: event.title,
+                event_date: event.date,
+                event_venue: event.venue
+              }
+            })
+          });
 
-        if (!response.ok) {
-          throw new Error("Failed to send confirmation email.");
+          if (!response.ok) {
+            console.warn("EmailJS failed to send confirmation email. Check your template or quota.");
+          }
+        } catch (emailError) {
+          console.error("EmailJS network error:", emailError);
         }
       } else {
         console.warn("EmailJS configuration is missing. Sending notification skipped.");
@@ -136,39 +142,47 @@ function Events() {
                     <strong className="text-light">📅 Date:</strong> {event.date}
                   </p>
                 </div>
-                {user && (
-                  <div className="mt-4 text-end">
-                    {rsvpedEvents.includes(event.id) ? (
-                      <Button
-                        variant="danger"
-                        size="sm"
-                        className="px-4 text-white"
-                        disabled={rsvpLoadingId === event.id}
-                        onClick={() => handleCancelRSVP(event)}
-                      >
-                        {rsvpLoadingId === event.id ? (
-                          <Spinner animation="border" size="sm" />
-                        ) : (
-                          "Cancel RSVP"
-                        )}
-                      </Button>
-                    ) : (
-                      <Button
-                        variant="primary"
-                        size="sm"
-                        className="px-4 text-white"
-                        disabled={rsvpLoadingId === event.id}
-                        onClick={() => handleRSVP(event)}
-                      >
-                        {rsvpLoadingId === event.id ? (
-                          <Spinner animation="border" size="sm" />
-                        ) : (
-                          "RSVP"
-                        )}
-                      </Button>
-                    )}
-                  </div>
-                )}
+                </div>
+                <div className="mt-4 text-end">
+                  {!user ? (
+                    <Button
+                      variant="primary"
+                      size="sm"
+                      className="px-4 text-white"
+                      onClick={() => navigate('/login')}
+                    >
+                      Login to Register
+                    </Button>
+                  ) : rsvpedEvents.includes(event.id) ? (
+                    <Button
+                      variant="danger"
+                      size="sm"
+                      className="px-4 text-white"
+                      disabled={rsvpLoadingId === event.id}
+                      onClick={() => handleCancelRSVP(event)}
+                    >
+                      {rsvpLoadingId === event.id ? (
+                        <Spinner animation="border" size="sm" />
+                      ) : (
+                        "Cancel Registration"
+                      )}
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="primary"
+                      size="sm"
+                      className="px-4 text-white"
+                      disabled={rsvpLoadingId === event.id}
+                      onClick={() => handleRSVP(event)}
+                    >
+                      {rsvpLoadingId === event.id ? (
+                        <Spinner animation="border" size="sm" />
+                      ) : (
+                        "Register"
+                      )}
+                    </Button>
+                  )}
+                </div>
               </div>
             </div>
           </div>
