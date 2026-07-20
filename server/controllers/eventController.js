@@ -31,7 +31,7 @@ const rsvpForEvent = async (req, res) => {
       return res.status(400).json({ message: "Already RSVPed to this event." });
     }
     console.error("RSVP error:", error);
-    res.status(500).json({ message: "Failed to process RSVP." });
+    res.status(500).json({ message: "Failed to process RSVP. Details: " + (error.message || error.toString()) });
   }
 };
 

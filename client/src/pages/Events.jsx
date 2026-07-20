@@ -79,8 +79,8 @@ function Events() {
       });
       
       if (!rsvpResponse.ok) {
-        const errorData = await rsvpResponse.json();
-        throw new Error(errorData.message || "Failed to register RSVP in database.");
+        const errorData = await rsvpResponse.json().catch(() => ({}));
+        throw new Error(errorData.message || "Failed to register RSVP in database. Server might be down.");
       }
 
       const updated = [...rsvpedEvents, event.id];
@@ -88,7 +88,7 @@ function Events() {
       setSuccessMsg(`Successfully RSVPed to "${event.title}"! A confirmation has been registered.`);
     } catch (error) {
       console.error("RSVP error:", error);
-      setErrorMsg("Failed to process RSVP. Please try again.");
+      setErrorMsg(error.message || "Failed to process RSVP. Please try again.");
     } finally {
       setRsvpLoadingId(null);
     }
@@ -104,11 +104,15 @@ function Events() {
         method: "DELETE",
         headers: { "Authorization": `Bearer ${token}` }
       });
-      if (!response.ok) throw new Error("Failed to cancel RSVP");
+      if (!response.ok) {
+        const errData = await response.json().catch(() => ({}));
+        throw new Error(errData.message || "Failed to cancel RSVP");
+      }
       setRsvpedEvents(rsvpedEvents.filter(id => id !== event.id));
       setSuccessMsg(`Cancelled RSVP for "${event.title}".`);
     } catch (error) {
-      setErrorMsg("Failed to cancel RSVP.");
+      console.error("Cancel RSVP error:", error);
+      setErrorMsg(error.message || "Failed to cancel RSVP.");
     } finally {
       setRsvpLoadingId(null);
     }
