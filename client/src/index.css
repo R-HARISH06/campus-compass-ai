@@ -252,3 +252,47 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff !important;
   box-shadow: 0 0 15px rgba(124, 58, 237, 0.4);
 }
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  /* Scale down large typography */
+  h1, .display-4, .display-5 {
+    font-size: 2rem !important;
+  }
+
+  /* Scale down massive spacing that forces scrolling on mobile */
+  .mt-5 { margin-top: 2rem !important; }
+  .pt-5 { padding-top: 2rem !important; }
+  .mb-5 { margin-bottom: 2rem !important; }
+  .pb-5 { padding-bottom: 2rem !important; }
+  
+  .p-4, .p-5 {
+    padding: 1.25rem !important; 
+  }
+
+  /* Make glass cards more compact */
+  .card, .glass-card {
+    border-radius: var(--radius-md) !important;
+  }
+
+  /* Chat and Split-Views */
+  .ai-dashboard {
+    height: auto; 
+    min-height: calc(100vh - 60px);
+  }
+  
+  .recommendations-scroll {
+    max-height: 250px; 
+    overflow-y: auto;
+  }
+  
+  .chat-messages {
+    min-height: 350px;
+  }
+  
+  /* Tables */
+  .table-responsive {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+  }
+}
