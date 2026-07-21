@@ -125,26 +125,26 @@ function AdminDashboard() {
       {currentUser?.role === "master_admin" && (
         <Row className="g-4 mb-5">
           <Col md={4}>
-            <Card className="h-100 animate-fade-in-up delay-1 border-0 shadow-sm">
+            <Card className="h-100 animate-fade-in-up delay-1 border-0 shadow-sm glass-card hover-scale">
               <Card.Body className="text-center p-4">
                 <h3 className="display-4 fw-bold text-primary">{stats.totalEvents}</h3>
-                <p className="text-muted fw-bold mb-0">Total Events</p>
+                <p className="text-white fw-bold mb-0">Total Events</p>
               </Card.Body>
             </Card>
           </Col>
           <Col md={4}>
-            <Card className="h-100 animate-fade-in-up delay-2 border-0 shadow-sm">
+            <Card className="h-100 animate-fade-in-up delay-2 border-0 shadow-sm glass-card hover-scale">
               <Card.Body className="text-center p-4">
                 <h3 className="display-4 fw-bold text-success">{stats.totalClubs}</h3>
-                <p className="text-muted fw-bold mb-0">Active Clubs</p>
+                <p className="text-white fw-bold mb-0">Active Clubs</p>
               </Card.Body>
             </Card>
           </Col>
           <Col md={4}>
-            <Card className="h-100 animate-fade-in-up delay-3 border-0 shadow-sm">
+            <Card className="h-100 animate-fade-in-up delay-3 border-0 shadow-sm glass-card hover-scale">
               <Card.Body className="text-center p-4">
                 <h3 className="display-4 fw-bold text-warning">{stats.totalUsers}</h3>
-                <p className="text-muted fw-bold mb-0">Registered Users</p>
+                <p className="text-white fw-bold mb-0">Registered Users</p>
               </Card.Body>
             </Card>
           </Col>
@@ -157,15 +157,15 @@ function AdminDashboard() {
           <Tab eventKey="master" title="User Management">
             <Row className="animate-fade-in-up delay-4">
               <Col>
-                <Card className="border-0 shadow-sm bg-dark text-white">
-                  <Card.Header className="border-bottom-0 pt-4 pb-0 bg-dark">
+                <Card className="border-0 shadow-sm glass-card text-white">
+                  <Card.Header className="border-bottom-0 pt-4 pb-0 bg-transparent">
                     <div className="d-flex justify-content-between align-items-center">
                       <h4 className="fw-bold mb-0 text-warning">User Management</h4>
                     </div>
                   </Card.Header>
                   <Card.Body>
-                    <Table variant="dark" responsive hover className="mt-3 align-middle">
-                      <thead>
+                    <Table responsive hover className="mt-3 align-middle table-borderless text-white mb-0">
+                      <thead className="border-bottom border-secondary">
                         <tr>
                           <th>Name</th>
                           <th>Email</th>

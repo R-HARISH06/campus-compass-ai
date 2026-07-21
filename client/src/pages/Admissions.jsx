@@ -13,7 +13,7 @@ function Admissions() {
       <Row className="g-4">
         {/* Step-by-Step Registration Process */}
         <Col lg={8} className="animate-fade-in-up delay-1">
-          <Card className="h-100 bg-dark text-white border-secondary shadow-lg">
+          <Card className="h-100 glass-card text-white border-0 shadow-lg">
             <Card.Body className="p-4 p-md-5">
               <h2 className="fw-bold mb-4 gradient-text">📝 How Registration Works</h2>
               
@@ -62,7 +62,7 @@ function Admissions() {
 
         {/* Fee Structure Table */}
         <Col lg={4} className="animate-fade-in-up delay-2">
-          <Card className="h-100 bg-dark text-white border-secondary shadow-lg">
+          <Card className="h-100 glass-card text-white border-0 shadow-lg">
             <Card.Body className="p-4 p-md-5">
               <h2 className="fw-bold mb-4 text-center text-primary">💰 Fee Details</h2>
               <p className="text-muted text-center mb-4">Estimated tuition and fees per semester for the 2026-2027 academic year.</p>
@@ -99,25 +99,25 @@ function Admissions() {
       {/* FAQ Section */}
       <Row className="mt-5 animate-fade-in-up delay-3">
         <Col>
-          <Card className="bg-dark text-white border-secondary shadow-lg">
+          <Card className="glass-card text-white border-0 shadow-lg">
             <Card.Body className="p-4 p-md-5">
               <h2 className="fw-bold mb-4 gradient-text text-center">Frequently Asked Questions</h2>
               
               <Accordion flush className="custom-accordion">
-                <Accordion.Item eventKey="0" className="bg-dark border-secondary">
-                  <Accordion.Header className="text-light">When is the deadline to apply?</Accordion.Header>
+                <Accordion.Item eventKey="0" className="bg-transparent border-secondary text-white">
+                  <Accordion.Header>When is the deadline to apply?</Accordion.Header>
                   <Accordion.Body className="text-muted">
                     For the Fall semester, all applications and documents must be submitted by August 15th. For the Spring semester, the deadline is December 15th.
                   </Accordion.Body>
                 </Accordion.Item>
-                <Accordion.Item eventKey="1" className="bg-dark border-secondary">
-                  <Accordion.Header className="text-light">Do I need to pay the entire fee at once?</Accordion.Header>
+                <Accordion.Item eventKey="1" className="bg-transparent border-secondary text-white">
+                  <Accordion.Header>Do I need to pay the entire fee at once?</Accordion.Header>
                   <Accordion.Body className="text-muted">
                     No! We offer flexible payment plans. You can pay in 3 installments on the official college website. The first installment is due before course registration.
                   </Accordion.Body>
                 </Accordion.Item>
-                <Accordion.Item eventKey="2" className="bg-dark border-secondary">
-                  <Accordion.Header className="text-light">Can international students apply?</Accordion.Header>
+                <Accordion.Item eventKey="2" className="bg-transparent border-secondary text-white">
+                  <Accordion.Header>Can international students apply?</Accordion.Header>
                   <Accordion.Body className="text-muted">
                     Absolutely. International students follow the same registration process but must also provide valid passport copies and English proficiency test scores (IELTS/TOEFL).
                   </Accordion.Body>

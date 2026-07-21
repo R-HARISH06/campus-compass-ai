@@ -66,16 +66,16 @@ function ClubAdmin() {
       {error && <Alert variant="danger">{error}</Alert>}
       
       {clubsWithRequests.length === 0 ? (
-        <Alert variant="info" className="bg-dark text-white border-secondary">You have no pending requests.</Alert>
+        <Alert variant="info" className="glass-card text-white border-0">You have no pending requests.</Alert>
       ) : (
         clubsWithRequests.map(club => (
-          <Card key={club.id} className="mb-4 border-0 shadow-sm bg-dark text-white">
-            <Card.Header className="border-secondary bg-dark">
+          <Card key={club.id} className="mb-4 border-0 shadow-sm glass-card text-white">
+            <Card.Header className="border-bottom border-secondary bg-transparent">
               <h5 className="mb-0 text-warning">{club.name} Pending Requests</h5>
             </Card.Header>
             <Card.Body>
-              <Table variant="dark" hover responsive>
-                <thead>
+              <Table responsive hover className="table-borderless text-white align-middle">
+                <thead className="border-bottom border-secondary">
                   <tr>
                     <th>Student Name</th>
                     <th>Email</th>
@@ -83,7 +83,7 @@ function ClubAdmin() {
                     <th>Actions</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="border-top-0">
                   {requests[club.id].map(req => (
                     <tr key={req.id}>
                       <td>{req.name}</td>

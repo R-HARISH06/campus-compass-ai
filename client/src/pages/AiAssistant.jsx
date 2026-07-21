@@ -185,7 +185,7 @@ function AiAssistant() {
               <form onSubmit={handleSendMessage} className="d-flex gap-2">
                 <input
                   type="text"
-                  className="form-control bg-dark text-light border-secondary shadow-none"
+                  className="form-control modern-input text-light"
                   placeholder="Ask about admissions, hostel rules, or finding a faculty..."
                   value={input}
                   onChange={(e) => setInput(e.target.value)}

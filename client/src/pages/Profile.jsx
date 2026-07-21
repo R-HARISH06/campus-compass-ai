@@ -199,7 +199,7 @@ function Profile() {
 
       <div className="row mb-5 animate-fade-in-up delay-1">
         <div className="col-12">
-          <div className="card p-4 bg-dark text-white shadow border-0 position-relative">
+          <div className="glass-card p-4 text-white position-relative">
             <Button 
               variant="outline-light" 
               size="sm" 
@@ -278,7 +278,7 @@ function Profile() {
           ) : (
             <div className="list-group">
               {rsvpedEvents.map(event => (
-                <div key={event.id} className="list-group-item bg-dark text-white d-flex justify-content-between align-items-center mb-2 rounded border border-secondary">
+                <div key={event.id} className="list-group-item glass-card text-white d-flex justify-content-between align-items-center mb-2 px-3 py-3">
                   <div>
                     <h5 className="mb-1">{event.title}</h5>
                     <small className="text-muted">{event.date} • {event.venue}</small>
@@ -304,7 +304,7 @@ function Profile() {
           ) : (
             <div className="list-group">
               {clubs.map(club => (
-                <div key={club.id} className="list-group-item bg-dark text-white d-flex justify-content-between align-items-center mb-2 rounded border border-secondary">
+                <div key={club.id} className="list-group-item glass-card text-white d-flex justify-content-between align-items-center mb-2 px-3 py-3">
                   <div>
                     <h5 className="mb-1">{club.name}</h5>
                     <small className="text-muted">Meets: {club.meeting_day}</small>
@@ -326,31 +326,28 @@ function Profile() {
       )}
 
       {/* Edit Profile Modal */}
-      <Modal show={showEditModal} onHide={() => setShowEditModal(false)} centered contentClassName="bg-dark text-white border-secondary">
-        <Modal.Header closeButton className="border-secondary bg-dark" closeVariant="white">
+      <Modal show={showEditModal} onHide={() => setShowEditModal(false)} centered contentClassName="glass-card text-white border-secondary">
+        <Modal.Header closeButton className="border-secondary" closeVariant="white">
           <Modal.Title className="text-warning">Edit Profile</Modal.Title>
         </Modal.Header>
-        <Modal.Body className="bg-dark">
+        <Modal.Body>
           <Form onSubmit={handleProfileUpdate}>
-            <Form.Group className="mb-3">
-              <Form.Label>Full Name</Form.Label>
+            <Form.Group className="form-floating mb-3">
               <Form.Control 
                 type="text" 
                 required 
                 value={editData.name} 
                 onChange={(e) => setEditData({...editData, name: e.target.value})}
-                className="bg-secondary text-white border-0"
               />
+              <Form.Label>Full Name</Form.Label>
             </Form.Group>
             {['student', 'faculty'].includes(fullUser?.role || user?.role) && (
               <Row className="g-3 mb-3">
                 <Col md={6}>
-                  <Form.Group>
-                    <Form.Label>Department</Form.Label>
+                  <Form.Group className="form-floating">
                     <Form.Select 
                       value={editData.department} 
                       onChange={(e) => setEditData({...editData, department: e.target.value})}
-                      className="bg-secondary text-white border-0"
                     >
                       <option value="">Select Dept</option>
                       <option value="CSE">CSE</option>
@@ -359,16 +356,15 @@ function Profile() {
                       <option value="EEE">EEE</option>
                       <option value="MECH">MECH</option>
                     </Form.Select>
+                    <Form.Label>Department</Form.Label>
                   </Form.Group>
                 </Col>
                 {['student'].includes(fullUser?.role || user?.role) && (
                   <Col md={6}>
-                    <Form.Group>
-                      <Form.Label>Year</Form.Label>
+                    <Form.Group className="form-floating">
                       <Form.Select 
                         value={editData.year} 
                         onChange={(e) => setEditData({...editData, year: e.target.value})}
-                        className="bg-secondary text-white border-0"
                       >
                         <option value="">Select Year</option>
                         <option value="1">1st Year</option>
@@ -376,31 +372,30 @@ function Profile() {
                         <option value="3">3rd Year</option>
                         <option value="4">4th Year</option>
                       </Form.Select>
+                      <Form.Label>Year</Form.Label>
                     </Form.Group>
                   </Col>
                 )}
               </Row>
             )}
-            <Form.Group className="mb-3">
-              <Form.Label>Phone Number</Form.Label>
+            <Form.Group className="form-floating mb-3">
               <Form.Control 
                 type="tel" 
                 value={editData.phone} 
                 onChange={(e) => setEditData({...editData, phone: e.target.value})}
-                className="bg-secondary text-white border-0"
                 placeholder="e.g. 9876543210"
               />
+              <Form.Label>Phone Number</Form.Label>
             </Form.Group>
-            <Form.Group className="mb-4">
-              <Form.Label>Interests & Hobbies</Form.Label>
+            <Form.Group className="form-floating mb-4">
               <Form.Control 
                 as="textarea" 
-                rows={2}
+                style={{ height: '100px' }}
                 value={editData.interests} 
                 onChange={(e) => setEditData({...editData, interests: e.target.value})}
-                className="bg-secondary text-white border-0"
                 placeholder="Coding, AI, Sports..."
               />
+              <Form.Label>Interests & Hobbies</Form.Label>
             </Form.Group>
             <Button variant="primary" type="submit" className="w-100 fw-bold" disabled={savingProfile}>
               {savingProfile ? <Spinner size="sm" animation="border" /> : "Save Changes"}

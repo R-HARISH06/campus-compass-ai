@@ -99,8 +99,8 @@ function AnnouncementAdmin() {
       )}
 
       <Col lg={4}>
-        <Card className="border-0 shadow-sm bg-dark text-white h-100">
-          <Card.Header className="border-bottom-0 pt-4 pb-0 bg-dark">
+        <Card className="border-0 shadow-sm glass-card text-white h-100">
+          <Card.Header className="border-bottom-0 pt-4 pb-0 bg-transparent">
             <h4 className="fw-bold mb-0 text-warning">Post Announcement</h4>
           </Card.Header>
           <Card.Body>
@@ -113,7 +113,7 @@ function AnnouncementAdmin() {
                   placeholder="e.g. Exam Schedule Released"
                   value={formData.title}
                   onChange={e => setFormData({ ...formData, title: e.target.value })}
-                  className="bg-secondary text-white border-0"
+                  className="modern-input text-white"
                 />
               </Form.Group>
               <Form.Group className="mb-4">
@@ -124,7 +124,7 @@ function AnnouncementAdmin() {
                   placeholder="Enter the full announcement text..."
                   value={formData.body}
                   onChange={e => setFormData({ ...formData, body: e.target.value })}
-                  className="bg-secondary text-white border-0"
+                  className="modern-input text-white"
                 />
               </Form.Group>
               <Button type="submit" variant="primary" className="w-100 fw-bold" disabled={isSubmitting}>
@@ -136,8 +136,8 @@ function AnnouncementAdmin() {
       </Col>
 
       <Col lg={8}>
-        <Card className="border-0 shadow-sm bg-dark text-white h-100">
-          <Card.Header className="border-bottom-0 pt-4 pb-0 bg-dark">
+        <Card className="border-0 shadow-sm glass-card text-white h-100">
+          <Card.Header className="border-bottom-0 pt-4 pb-0 bg-transparent">
             <h4 className="fw-bold mb-0 text-warning">Active Announcements</h4>
           </Card.Header>
           <Card.Body>
@@ -146,8 +146,8 @@ function AnnouncementAdmin() {
             ) : announcements.length === 0 ? (
               <p className="text-muted text-center py-4">No announcements active.</p>
             ) : (
-              <Table variant="dark" responsive hover className="align-middle mt-2">
-                <thead>
+              <Table responsive hover className="align-middle mt-2 table-borderless text-white">
+                <thead className="border-bottom border-secondary">
                   <tr>
                     <th>Date</th>
                     <th>Title</th>
@@ -155,7 +155,7 @@ function AnnouncementAdmin() {
                     <th>Action</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="border-top-0">
                   {announcements.map(ann => (
                     <tr key={ann.id}>
                       <td className="text-muted" style={{ width: "120px" }}>

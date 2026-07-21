@@ -78,30 +78,30 @@ function Timetable() {
       {error && <div className="alert alert-danger text-center">{error}</div>}
 
       {!loading && timetableData && (
-        <div className="table-responsive animate-fade-in-up delay-2">
-          <table className="table table-dark table-bordered table-hover text-center align-middle" style={{ minWidth: "1200px" }}>
-            <thead className="table-primary text-dark">
+        <div className="table-responsive animate-fade-in-up delay-2 glass-card p-3">
+          <table className="table table-borderless table-hover text-center align-middle text-white mb-0" style={{ minWidth: "1200px" }}>
+            <thead className="border-bottom border-secondary">
               <tr>
-                <th style={{ width: "100px" }}>Day / Time</th>
-                <th>P1<br/><small>9:15 - 10:05</small></th>
-                <th>P2<br/><small>10:05 - 10:55</small></th>
-                <th className="bg-warning text-dark" style={{ width: "60px" }}>Break<br/><small>15m</small></th>
-                <th>P3<br/><small>11:10 - 12:00</small></th>
-                <th>P4<br/><small>12:00 - 12:50</small></th>
-                <th className="bg-danger text-white" style={{ width: "80px" }}>Lunch<br/><small>45m</small></th>
-                <th>P5<br/><small>1:35 - 2:20</small></th>
-                <th>P6<br/><small>2:20 - 3:05</small></th>
-                <th className="bg-warning text-dark" style={{ width: "60px" }}>Break<br/><small>10m</small></th>
-                <th>P7<br/><small>3:15 - 4:00</small></th>
-                <th>P8<br/><small>4:00 - 4:45</small></th>
+                <th style={{ width: "100px" }} className="text-white">Day / Time</th>
+                <th className="text-white">P1<br/><small className="text-muted">9:15 - 10:05</small></th>
+                <th className="text-white">P2<br/><small className="text-muted">10:05 - 10:55</small></th>
+                <th className="text-warning border-start border-end border-secondary" style={{ width: "60px", background: "rgba(255,255,255,0.02)" }}>Break<br/><small>15m</small></th>
+                <th className="text-white">P3<br/><small className="text-muted">11:10 - 12:00</small></th>
+                <th className="text-white">P4<br/><small className="text-muted">12:00 - 12:50</small></th>
+                <th className="text-danger border-start border-end border-secondary" style={{ width: "80px", background: "rgba(255,255,255,0.02)" }}>Lunch<br/><small>45m</small></th>
+                <th className="text-white">P5<br/><small className="text-muted">1:35 - 2:20</small></th>
+                <th className="text-white">P6<br/><small className="text-muted">2:20 - 3:05</small></th>
+                <th className="text-warning border-start border-end border-secondary" style={{ width: "60px", background: "rgba(255,255,255,0.02)" }}>Break<br/><small>10m</small></th>
+                <th className="text-white">P7<br/><small className="text-muted">3:15 - 4:00</small></th>
+                <th className="text-white">P8<br/><small className="text-muted">4:00 - 4:45</small></th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="border-top-0">
               {daysOrder.map((day, idx) => {
                 const dayRecords = timetableData[day] || [];
                 return (
-                  <tr key={day}>
-                    <td className="fw-bold bg-secondary text-white">{day}</td>
+                  <tr key={day} className="border-bottom border-secondary">
+                    <td className="fw-bold text-white border-end border-secondary" style={{ background: "rgba(255,255,255,0.02)" }}>{day}</td>
                     
                     <td className="p-2">
                       <div className="fw-bold text-info" style={{fontSize: "0.9rem"}}>{getPeriod(dayRecords, 'Period 1')?.subject || '-'}</div>
@@ -115,7 +115,7 @@ function Timetable() {
                       <small className="text-muted">{getPeriod(dayRecords, 'Period 2')?.room}</small>
                     </td>
 
-                    {idx === 0 && <td rowSpan="5" className="bg-warning text-dark fw-bold align-middle" style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}>MORNING BREAK (10:55 - 11:10)</td>}
+                    {idx === 0 && <td rowSpan="5" className="text-warning fw-bold align-middle border-start border-end border-secondary" style={{ writingMode: "vertical-rl", transform: "rotate(180deg)", background: "rgba(255,255,255,0.02)" }}>MORNING BREAK (10:55 - 11:10)</td>}
 
                     <td className="p-2">
                       <div className="fw-bold text-info" style={{fontSize: "0.9rem"}}>{getPeriod(dayRecords, 'Period 3')?.subject || '-'}</div>
@@ -129,7 +129,7 @@ function Timetable() {
                       <small className="text-muted">{getPeriod(dayRecords, 'Period 4')?.room}</small>
                     </td>
 
-                    {idx === 0 && <td rowSpan="5" className="bg-danger text-white fw-bold align-middle" style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}>LUNCH BREAK (12:50 - 1:35)</td>}
+                    {idx === 0 && <td rowSpan="5" className="text-danger fw-bold align-middle border-start border-end border-secondary" style={{ writingMode: "vertical-rl", transform: "rotate(180deg)", background: "rgba(255,255,255,0.02)" }}>LUNCH BREAK (12:50 - 1:35)</td>}
 
                     <td className="p-2">
                       <div className="fw-bold text-info" style={{fontSize: "0.9rem"}}>{getPeriod(dayRecords, 'Period 5')?.subject || '-'}</div>
@@ -143,7 +143,7 @@ function Timetable() {
                       <small className="text-muted">{getPeriod(dayRecords, 'Period 6')?.room}</small>
                     </td>
 
-                    {idx === 0 && <td rowSpan="5" className="bg-warning text-dark fw-bold align-middle" style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}>EVENING BREAK (3:05 - 3:15)</td>}
+                    {idx === 0 && <td rowSpan="5" className="text-warning fw-bold align-middle border-start border-end border-secondary" style={{ writingMode: "vertical-rl", transform: "rotate(180deg)", background: "rgba(255,255,255,0.02)" }}>EVENING BREAK (3:05 - 3:15)</td>}
 
                     <td className="p-2">
                       <div className="fw-bold text-info" style={{fontSize: "0.9rem"}}>{getPeriod(dayRecords, 'Period 7')?.subject || '-'}</div>

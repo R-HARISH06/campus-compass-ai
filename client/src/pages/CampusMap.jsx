@@ -109,7 +109,7 @@ function CampusMap() {
         Navigate through Saranathan College of Engineering, Panchapur, Trichy. Use this interactive map to find departments, hostels, and the canteen.
       </p>
 
-      <div className="card border-0 shadow-lg animate-fade-in-up delay-1 overflow-hidden" style={{ borderRadius: "20px" }}>
+      <div className="glass-card border-0 shadow-lg animate-fade-in-up delay-1 overflow-hidden" style={{ borderRadius: "20px" }}>
         <div style={{ height: "600px", width: "100%" }}>
           <MapContainer center={centerPosition} zoom={18} scrollWheelZoom={false} style={{ height: "100%", width: "100%" }}>
             

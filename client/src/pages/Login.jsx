@@ -56,8 +56,7 @@ function Login() {
               )}
 
               <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-4" controlId="formLoginEmail">
-                  <Form.Label className="text-muted fw-semibold ms-1" style={{ fontSize: '0.9rem' }}>Email Address</Form.Label>
+                <Form.Group className="form-floating mb-4" controlId="formLoginEmail">
                   <Form.Control
                     type="email"
                     placeholder="name@example.com"
@@ -65,10 +64,10 @@ function Login() {
                     onChange={(e) => setEmail(e.target.value)}
                     required
                   />
+                  <Form.Label>Email Address</Form.Label>
                 </Form.Group>
 
-                <Form.Group className="mb-5" controlId="formLoginPassword">
-                  <Form.Label className="text-muted fw-semibold ms-1" style={{ fontSize: '0.9rem' }}>Password</Form.Label>
+                <Form.Group className="form-floating mb-5" controlId="formLoginPassword">
                   <Form.Control
                     type="password"
                     placeholder="Enter your password"
@@ -76,6 +75,7 @@ function Login() {
                     onChange={(e) => setPassword(e.target.value)}
                     required
                   />
+                  <Form.Label>Password</Form.Label>
                 </Form.Group>
 
                 <Button

@@ -71,12 +71,26 @@ function Faculty() {
       </div>
 
       {loading ? (
-        <div className="text-center"><Spinner animation="border" variant="primary" /></div>
+        <div className="row g-4">
+          {[1, 2, 3, 4, 5, 6].map(idx => (
+            <div className="col-md-4" key={idx}>
+              <div className="glass-card text-center h-100 py-4 skeleton-loader">
+                <div className="card-body">
+                  <div style={{ height: '28px', width: '70%', margin: '0 auto 16px', background: 'rgba(255,255,255,0.1)', borderRadius: '4px' }}></div>
+                  <div style={{ height: '16px', width: '50%', margin: '0 auto 8px', background: 'rgba(255,255,255,0.1)', borderRadius: '4px' }}></div>
+                  <div style={{ height: '16px', width: '60%', margin: '0 auto 8px', background: 'rgba(255,255,255,0.1)', borderRadius: '4px' }}></div>
+                  <div style={{ height: '16px', width: '55%', margin: '0 auto 24px', background: 'rgba(255,255,255,0.1)', borderRadius: '4px' }}></div>
+                  <div style={{ height: '38px', width: '100%', background: 'rgba(255,255,255,0.1)', borderRadius: '12px' }}></div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       ) : (
         <div className="row g-4">
           {faculty.map((item, index) => (
           <div className="col-md-4" key={index}>
-            <div className={`card text-center h-100 py-4 hover-scale animate-fade-in-up delay-${(index % 4) + 1}`}>
+            <div className={`glass-card text-center h-100 py-4 hover-scale animate-fade-in-up delay-${(index % 4) + 1}`}>
               <div className="card-body">
                 <h2 className="card-title h4 fw-bold">{item.name} {item.is_hod ? "⭐ (HOD)" : ""}</h2>
                 <p className="text-muted mb-1"><strong className="text-light">Department:</strong> {item.department}</p>
@@ -97,11 +111,11 @@ function Faculty() {
       )}
 
       {/* Faculty Profile Modal */}
-      <Modal show={showModal} onHide={handleCloseModal} centered>
-        <Modal.Header closeButton className="bg-dark text-white border-secondary">
+      <Modal show={showModal} onHide={handleCloseModal} centered contentClassName="glass-card text-white border-secondary">
+        <Modal.Header closeButton className="border-secondary" closeVariant="white">
           <Modal.Title>{selectedFaculty?.name}</Modal.Title>
         </Modal.Header>
-        <Modal.Body className="bg-dark text-white">
+        <Modal.Body>
           {selectedFaculty && (
             <div>
               <div className="text-center mb-4">
@@ -109,47 +123,47 @@ function Faculty() {
                 <p className="text-muted">{selectedFaculty.department} Department {selectedFaculty.is_hod ? "• HOD" : ""}</p>
               </div>
               
-              <ul className="list-group list-group-flush bg-dark text-white">
-                <li className="list-group-item bg-dark text-white border-secondary">
+              <ul className="list-group list-group-flush">
+                <li className="list-group-item bg-transparent text-white border-secondary px-0">
                   <strong>🎓 Qualification:</strong> {selectedFaculty.qualification}
                 </li>
-                <li className="list-group-item bg-dark text-white border-secondary">
+                <li className="list-group-item bg-transparent text-white border-secondary px-0">
                   <strong>📧 Email:</strong> <a href={`mailto:${selectedFaculty.email}`} className="text-decoration-none text-primary">{selectedFaculty.email}</a>
                 </li>
                 {selectedFaculty.experience && (
-                  <li className="list-group-item bg-dark text-white border-secondary">
+                  <li className="list-group-item bg-transparent text-white border-secondary px-0">
                     <strong>👨‍💼 Experience:</strong> {selectedFaculty.experience}
                   </li>
                 )}
                 {selectedFaculty.education_history && (
-                  <li className="list-group-item bg-dark text-white border-secondary">
+                  <li className="list-group-item bg-transparent text-white border-secondary px-0">
                     <strong>🎓 Education History:</strong> <br/> 
                     <span style={{ whiteSpace: "pre-line" }}>{selectedFaculty.education_history}</span>
                   </li>
                 )}
                 {selectedFaculty.area_of_expertise && (
-                  <li className="list-group-item bg-dark text-white border-secondary">
+                  <li className="list-group-item bg-transparent text-white border-secondary px-0">
                     <strong>🧠 Area of Expertise:</strong> {selectedFaculty.area_of_expertise}
                   </li>
                 )}
                 {selectedFaculty.projects && (
-                  <li className="list-group-item bg-dark text-white border-secondary">
+                  <li className="list-group-item bg-transparent text-white border-secondary px-0">
                     <strong>🚀 Notable Projects / Research:</strong> <br/>
                     <span style={{ whiteSpace: "pre-line" }}>{selectedFaculty.projects}</span>
                   </li>
                 )}
                 {selectedFaculty.room_no && (
-                  <li className="list-group-item bg-dark text-white border-secondary">
+                  <li className="list-group-item bg-transparent text-white border-secondary px-0">
                     <strong>🏢 Room No:</strong> {selectedFaculty.room_no}
                   </li>
                 )}
                 {selectedFaculty.office_hours && (
-                  <li className="list-group-item bg-dark text-white border-secondary">
+                  <li className="list-group-item bg-transparent text-white border-secondary px-0">
                     <strong>🕒 Office Hours:</strong> {selectedFaculty.office_hours}
                   </li>
                 )}
                 {selectedFaculty.subjects_handled && (
-                  <li className="list-group-item bg-dark text-white border-secondary">
+                  <li className="list-group-item bg-transparent text-white border-secondary px-0">
                     <strong>📚 Subjects Handled:</strong> {selectedFaculty.subjects_handled}
                   </li>
                 )}
@@ -157,7 +171,7 @@ function Faculty() {
             </div>
           )}
         </Modal.Body>
-        <Modal.Footer className="bg-dark border-secondary">
+        <Modal.Footer className="border-secondary">
           <Button variant="secondary" onClick={handleCloseModal}>
             Close
           </Button>

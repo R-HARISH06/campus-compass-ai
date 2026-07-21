@@ -106,8 +106,8 @@ function DataAdmin() {
         <Tab eventKey="faculty" title="Faculty Records">
           <Row className="g-4">
             <Col lg={4}>
-              <Card className="border-0 shadow-sm bg-dark text-white">
-                <Card.Header className="border-bottom-0 pt-4 pb-0 bg-dark">
+              <Card className="border-0 shadow-sm glass-card text-white">
+                <Card.Header className="border-bottom-0 pt-4 pb-0 bg-transparent">
                   <h4 className="fw-bold mb-0 text-warning">Add Faculty</h4>
                 </Card.Header>
                 <Card.Body>
@@ -118,7 +118,7 @@ function DataAdmin() {
                         type="text" required
                         value={fFormData.name}
                         onChange={e => setFFormData({ ...fFormData, name: e.target.value })}
-                        className="bg-secondary text-white border-0"
+                        className="modern-input text-white"
                       />
                     </Form.Group>
                     <Row className="g-2 mb-3">
@@ -129,7 +129,7 @@ function DataAdmin() {
                             type="text" required placeholder="e.g. CSE"
                             value={fFormData.department}
                             onChange={e => setFFormData({ ...fFormData, department: e.target.value })}
-                            className="bg-secondary text-white border-0"
+                            className="modern-input text-white"
                           />
                         </Form.Group>
                       </Col>
@@ -140,7 +140,7 @@ function DataAdmin() {
                             required
                             value={fFormData.designation}
                             onChange={e => setFFormData({ ...fFormData, designation: e.target.value })}
-                            className="bg-secondary text-white border-0"
+                            className="modern-input text-white"
                           >
                             <option value="Assistant Professor">Asst. Professor</option>
                             <option value="Associate Professor">Assoc. Professor</option>
@@ -155,7 +155,7 @@ function DataAdmin() {
                         type="email" required
                         value={fFormData.email}
                         onChange={e => setFFormData({ ...fFormData, email: e.target.value })}
-                        className="bg-secondary text-white border-0"
+                        className="modern-input text-white"
                       />
                     </Form.Group>
                     <Form.Group className="mb-4">
@@ -176,8 +176,8 @@ function DataAdmin() {
             </Col>
 
             <Col lg={8}>
-              <Card className="border-0 shadow-sm bg-dark text-white h-100">
-                <Card.Header className="border-bottom-0 pt-4 pb-0 bg-dark">
+              <Card className="border-0 shadow-sm glass-card text-white h-100">
+                <Card.Header className="border-bottom-0 pt-4 pb-0 bg-transparent">
                   <h4 className="fw-bold mb-0 text-warning">Faculty Directory</h4>
                 </Card.Header>
                 <Card.Body>
@@ -186,8 +186,8 @@ function DataAdmin() {
                   ) : faculty.length === 0 ? (
                     <p className="text-muted py-4">No faculty records found.</p>
                   ) : (
-                    <Table variant="dark" responsive hover className="align-middle mt-2">
-                      <thead>
+                    <Table responsive hover className="align-middle mt-2 table-borderless text-white">
+                      <thead className="border-bottom border-secondary">
                         <tr>
                           <th>Name</th>
                           <th>Dept</th>
@@ -195,7 +195,7 @@ function DataAdmin() {
                           <th>Action</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody className="border-top-0">
                         {faculty.map(f => (
                           <tr key={f.id}>
                             <td className="fw-semibold">{f.name}</td>

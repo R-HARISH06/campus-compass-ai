@@ -59,17 +59,29 @@ function CanteenMenu() {
       </ul>
 
       <div className="row g-4 animate-fade-in-up delay-2">
-        {filteredMenu.length === 0 ? (
+        {loading ? (
+          [1, 2, 3, 4, 5, 6, 7, 8].map((idx) => (
+            <div key={idx} className="col-md-4 col-lg-3">
+              <div className="glass-card h-100 p-4 d-flex flex-column skeleton-loader">
+                <div style={{ height: '24px', width: '70%', marginBottom: '16px', background: 'rgba(255,255,255,0.1)', borderRadius: '4px' }}></div>
+                <div style={{ height: '20px', width: '40%', marginBottom: 'auto', background: 'rgba(255,255,255,0.1)', borderRadius: '4px' }}></div>
+                <div className="mt-4 border-top border-secondary pt-3">
+                  <div style={{ height: '28px', width: '50%', background: 'rgba(255,255,255,0.1)', borderRadius: '4px' }}></div>
+                </div>
+              </div>
+            </div>
+          ))
+        ) : filteredMenu.length === 0 ? (
           <div className="col-12">
-            <div className="alert alert-dark border-secondary text-center">
+            <div className="alert glass-card text-center text-white border-0">
               No items available in this category at the moment.
             </div>
           </div>
         ) : (
           filteredMenu.map(item => (
             <div key={item.id} className="col-md-4 col-lg-3">
-              <div className={`card h-100 menu-card ${!item.is_available ? 'unavailable' : ''}`}>
-                <div className="card-body d-flex flex-column">
+              <div className={`glass-card h-100 menu-card hover-scale ${!item.is_available ? 'opacity-50' : ''}`}>
+                <div className="card-body d-flex flex-column p-4">
                   <div className="d-flex justify-content-between align-items-start mb-2">
                     <h5 className="card-title fw-bold text-light mb-0">{item.item_name}</h5>
                     {item.is_available ? (

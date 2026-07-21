@@ -115,8 +115,8 @@ function EventAdmin() {
       )}
 
       <Col lg={4}>
-        <Card className="border-0 shadow-sm bg-dark text-white h-100">
-          <Card.Header className="border-bottom-0 pt-4 pb-0 bg-dark">
+        <Card className="border-0 shadow-sm glass-card text-white h-100">
+          <Card.Header className="border-bottom-0 pt-4 pb-0 bg-transparent">
             <h4 className="fw-bold mb-0 text-warning">Schedule Event</h4>
           </Card.Header>
           <Card.Body>
@@ -128,7 +128,7 @@ function EventAdmin() {
                   required
                   value={formData.title}
                   onChange={e => setFormData({ ...formData, title: e.target.value })}
-                  className="bg-secondary text-white border-0"
+                  className="modern-input text-white"
                 />
               </Form.Group>
               
@@ -142,7 +142,7 @@ function EventAdmin() {
                       placeholder="e.g. Oct 25, 10:00 AM"
                       value={formData.date}
                       onChange={e => setFormData({ ...formData, date: e.target.value })}
-                      className="bg-secondary text-white border-0"
+                      className="modern-input text-white"
                     />
                   </Form.Group>
                 </Col>
@@ -155,7 +155,7 @@ function EventAdmin() {
                       placeholder="e.g. Main Auditorium"
                       value={formData.venue}
                       onChange={e => setFormData({ ...formData, venue: e.target.value })}
-                      className="bg-secondary text-white border-0"
+                      className="modern-input text-white"
                     />
                   </Form.Group>
                 </Col>
@@ -169,7 +169,7 @@ function EventAdmin() {
                       required
                       value={formData.event_type}
                       onChange={e => setFormData({ ...formData, event_type: e.target.value })}
-                      className="bg-secondary text-white border-0"
+                      className="modern-input text-white"
                     >
                       <option value="technical">Technical</option>
                       <option value="cultural">Cultural</option>
@@ -186,7 +186,7 @@ function EventAdmin() {
                       placeholder="e.g. CSE"
                       value={formData.department}
                       onChange={e => setFormData({ ...formData, department: e.target.value })}
-                      className="bg-secondary text-white border-0"
+                      className="modern-input text-white"
                     />
                   </Form.Group>
                 </Col>
@@ -199,7 +199,7 @@ function EventAdmin() {
                   placeholder="https://..."
                   value={formData.image_url}
                   onChange={e => setFormData({ ...formData, image_url: e.target.value })}
-                  className="bg-secondary text-white border-0"
+                  className="modern-input text-white"
                 />
               </Form.Group>
 
@@ -211,7 +211,7 @@ function EventAdmin() {
                   required
                   value={formData.description}
                   onChange={e => setFormData({ ...formData, description: e.target.value })}
-                  className="bg-secondary text-white border-0"
+                  className="modern-input text-white"
                 />
               </Form.Group>
 
@@ -224,8 +224,8 @@ function EventAdmin() {
       </Col>
 
       <Col lg={8}>
-        <Card className="border-0 shadow-sm bg-dark text-white h-100">
-          <Card.Header className="border-bottom-0 pt-4 pb-0 bg-dark">
+        <Card className="border-0 shadow-sm glass-card text-white h-100">
+          <Card.Header className="border-bottom-0 pt-4 pb-0 bg-transparent">
             <h4 className="fw-bold mb-0 text-warning">Scheduled Events</h4>
           </Card.Header>
           <Card.Body>
@@ -234,8 +234,8 @@ function EventAdmin() {
             ) : events.length === 0 ? (
               <p className="text-muted text-center py-4">No events found.</p>
             ) : (
-              <Table variant="dark" responsive hover className="align-middle mt-2">
-                <thead>
+              <Table responsive hover className="align-middle mt-2 table-borderless text-white">
+                <thead className="border-bottom border-secondary">
                   <tr>
                     <th>Title</th>
                     <th>Date</th>
@@ -243,7 +243,7 @@ function EventAdmin() {
                     <th>Action</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="border-top-0">
                   {events.map(ev => (
                     <tr key={ev.id}>
                       <td className="fw-semibold text-primary">{ev.title}</td>

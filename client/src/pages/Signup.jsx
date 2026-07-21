@@ -67,8 +67,7 @@ function Signup() {
               )}
 
               <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-4" controlId="formSignupName">
-                  <Form.Label className="text-muted fw-semibold ms-1" style={{ fontSize: '0.9rem' }}>Full Name</Form.Label>
+                <Form.Group className="form-floating mb-4" controlId="formSignupName">
                   <Form.Control
                     type="text"
                     placeholder="Enter full name"
@@ -76,10 +75,10 @@ function Signup() {
                     onChange={(e) => setName(e.target.value)}
                     required
                   />
+                  <Form.Label>Full Name</Form.Label>
                 </Form.Group>
 
-                <Form.Group className="mb-4" controlId="formSignupEmail">
-                  <Form.Label className="text-muted fw-semibold ms-1" style={{ fontSize: '0.9rem' }}>Email Address</Form.Label>
+                <Form.Group className="form-floating mb-4" controlId="formSignupEmail">
                   <Form.Control
                     type="email"
                     placeholder="name@example.com"
@@ -87,10 +86,10 @@ function Signup() {
                     onChange={(e) => setEmail(e.target.value)}
                     required
                   />
+                  <Form.Label>Email Address</Form.Label>
                 </Form.Group>
 
-                <Form.Group className="mb-4" controlId="formSignupPassword">
-                  <Form.Label className="text-muted fw-semibold ms-1" style={{ fontSize: '0.9rem' }}>Password</Form.Label>
+                <Form.Group className="form-floating mb-4" controlId="formSignupPassword">
                   <Form.Control
                     type="password"
                     placeholder="Password (min 6 chars)"
@@ -99,10 +98,10 @@ function Signup() {
                     required
                     minLength={6}
                   />
+                  <Form.Label>Password</Form.Label>
                 </Form.Group>
 
-                <Form.Group className="mb-4" controlId="formSignupRole">
-                  <Form.Label className="text-muted fw-semibold ms-1" style={{ fontSize: '0.9rem' }}>Account Role</Form.Label>
+                <Form.Group className="form-floating mb-4" controlId="formSignupRole">
                   <Form.Select
                     value={role}
                     onChange={(e) => {
@@ -121,11 +120,11 @@ function Signup() {
                     <option value="club_admin">Club Admin</option>
                     <option value="master_admin">Admin</option>
                   </Form.Select>
+                  <Form.Label>Account Role</Form.Label>
                 </Form.Group>
 
                 {role !== "student" && (
-                  <Form.Group className="mb-4" controlId="formSignupAdminCode">
-                    <Form.Label className="text-muted fw-semibold ms-1" style={{ fontSize: '0.9rem' }}>Secret Admin Code</Form.Label>
+                  <Form.Group className="form-floating mb-4" controlId="formSignupAdminCode">
                     <Form.Control
                       type="password"
                       placeholder="Required for non-student roles"
@@ -133,25 +132,25 @@ function Signup() {
                       onChange={(e) => setAdminCode(e.target.value)}
                       required
                     />
+                    <Form.Label>Secret Admin Code</Form.Label>
                   </Form.Group>
                 )}
 
                 {role === "student" && (
                   <Row className="mb-2">
                     <Col>
-                      <Form.Group className="mb-4" controlId="formSignupDept">
-                        <Form.Label className="text-muted fw-semibold ms-1" style={{ fontSize: '0.9rem' }}>Department</Form.Label>
+                      <Form.Group className="form-floating mb-4" controlId="formSignupDept">
                         <Form.Control
                           type="text"
                           placeholder="e.g. CS, IT"
                           value={department}
                           onChange={(e) => setDepartment(e.target.value)}
                         />
+                        <Form.Label>Department</Form.Label>
                       </Form.Group>
                     </Col>
                     <Col>
-                      <Form.Group className="mb-4" controlId="formSignupYear">
-                        <Form.Label className="text-muted fw-semibold ms-1" style={{ fontSize: '0.9rem' }}>Year</Form.Label>
+                      <Form.Group className="form-floating mb-4" controlId="formSignupYear">
                         <Form.Select
                           value={year}
                           onChange={(e) => setYear(e.target.value)}
@@ -162,6 +161,7 @@ function Signup() {
                           <option value="3">3rd Year</option>
                           <option value="4">4th Year</option>
                         </Form.Select>
+                        <Form.Label>Year</Form.Label>
                       </Form.Group>
                     </Col>
                   </Row>

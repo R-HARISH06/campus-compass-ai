@@ -84,17 +84,18 @@ function CafeAdmin() {
         </Button>
       </div>
       
-      <Table variant="dark" hover responsive>
-        <thead>
-          <tr>
-            <th>Item Name</th>
-            <th>Type</th>
-            <th>Price</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div className="glass-card p-3 rounded-4">
+        <Table responsive hover className="table-borderless text-white align-middle mb-0">
+          <thead className="border-bottom border-secondary">
+            <tr>
+              <th>Item Name</th>
+              <th>Type</th>
+              <th>Price</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody className="border-top-0">
           {menu.map(item => (
             <tr key={item.id}>
               <td>{item.item_name}</td>
@@ -112,32 +113,33 @@ function CafeAdmin() {
             </tr>
           ))}
         </tbody>
-      </Table>
+        </Table>
+      </div>
 
-      <Modal show={showModal} onHide={() => setShowModal(false)} variant="dark">
-        <Modal.Header closeButton className="bg-dark text-white border-secondary">
+      <Modal show={showModal} onHide={() => setShowModal(false)} centered contentClassName="glass-card text-white border-secondary">
+        <Modal.Header closeButton className="border-bottom border-secondary bg-transparent" closeVariant="white">
           <Modal.Title>{formData.id ? "Edit Item" : "Add Item"}</Modal.Title>
         </Modal.Header>
-        <Modal.Body className="bg-dark text-white">
+        <Modal.Body className="bg-transparent text-white">
           <Form onSubmit={handleSave}>
             <Form.Group className="mb-3">
               <Form.Label>Item Name</Form.Label>
-              <Form.Control type="text" required value={formData.item_name} onChange={e => setFormData({...formData, item_name: e.target.value})} className="bg-secondary text-white border-0" />
+              <Form.Control type="text" required value={formData.item_name} onChange={e => setFormData({...formData, item_name: e.target.value})} className="modern-input text-white" />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Type</Form.Label>
-              <Form.Select value={formData.item_type} onChange={e => setFormData({...formData, item_type: e.target.value})} className="bg-secondary text-white border-0">
+              <Form.Select value={formData.item_type} onChange={e => setFormData({...formData, item_type: e.target.value})} className="modern-input text-white">
                 <option value="breakfast">Breakfast</option>
                 <option value="lunch">Lunch</option>
                 <option value="snacks">Snacks</option>
                 <option value="beverage">Beverage</option>
               </Form.Select>
             </Form.Group>
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-4">
               <Form.Label>Price (₹)</Form.Label>
-              <Form.Control type="number" required value={formData.price} onChange={e => setFormData({...formData, price: e.target.value})} className="bg-secondary text-white border-0" />
+              <Form.Control type="number" required value={formData.price} onChange={e => setFormData({...formData, price: e.target.value})} className="modern-input text-white" />
             </Form.Group>
-            <Button variant="primary" type="submit" className="w-100">Save Item</Button>
+            <Button variant="primary" type="submit" className="w-100 fw-bold">Save Item</Button>
           </Form>
         </Modal.Body>
       </Modal>
