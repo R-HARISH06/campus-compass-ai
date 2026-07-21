@@ -1,7 +1,6 @@
 /* AiAssistant.css */
 
 .ai-dashboard {
-  height: calc(100vh - 70px); /* Fill screen below navbar */
   min-height: 600px;
 }
 

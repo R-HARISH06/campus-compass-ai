@@ -94,8 +94,8 @@ function AiAssistant() {
   };
 
   return (
-    <div className="container-fluid mt-5 pt-4 ai-dashboard">
-      <div className="row g-4 h-100 p-3">
+    <div className="container-fluid mt-5 pt-4 ai-dashboard d-flex flex-column flex-grow-1">
+      <div className="row g-4 flex-grow-1 p-3">
         
         {/* LEFT PANEL: Smart Recommendations */}
         <div className="col-lg-5 animate-fade-in-up">

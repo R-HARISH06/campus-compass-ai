@@ -21,7 +21,8 @@ function PageWrapper({ children }) {
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
-      style={{ width: '100%' }}
+      style={{ width: '100%', display: 'flex', flexDirection: 'column', flexGrow: 1, minHeight: '100%' }}
+      className="d-flex flex-column flex-grow-1"
     >
       {children}
     </motion.div>

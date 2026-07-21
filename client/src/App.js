@@ -40,9 +40,9 @@ function AppRoutes() {
   return (
     <div className="d-flex flex-column min-vh-100">
       <Navbar />
-      <main className="flex-grow-1">
+      <main className="flex-grow-1 d-flex flex-column">
         <AnimatePresence mode="wait">
-          <Suspense fallback={<div className="d-flex justify-content-center align-items-center vh-100"><Spinner animation="border" variant="primary" /></div>}>
+          <Suspense fallback={<div className="d-flex flex-grow-1 justify-content-center align-items-center"><Spinner animation="border" variant="primary" /></div>}>
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={<PageWrapper><Dashboard /></PageWrapper>} />
               <Route path="/events" element={<PageWrapper><Events /></PageWrapper>} />
