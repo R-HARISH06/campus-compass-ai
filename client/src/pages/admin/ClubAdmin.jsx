@@ -36,7 +36,9 @@ function ClubAdmin() {
   };
 
   useEffect(() => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
     fetchClubsAndRequests();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleRequest = async (clubId, userId, status) => {

@@ -48,7 +48,9 @@ function AiAssistant() {
         setIsRecLoading(false);
       }
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
     fetchRecommendations();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const handleSendMessage = async (e) => {

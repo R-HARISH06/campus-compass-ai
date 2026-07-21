@@ -45,6 +45,7 @@ function AdminDashboard() {
 
     if (token) {
       fetchAdminData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
     }
   }, [token]);
 

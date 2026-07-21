@@ -15,6 +15,7 @@ function Timetable() {
   const daysOrder = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
   useEffect(() => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
     fetchTimetable();
   }, [selectedDept, selectedYear]);
 
