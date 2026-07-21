@@ -182,7 +182,7 @@ const askGemini = async (req, res) => {
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
     const model = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash",
+      model: "gemini-flash-latest",
       systemInstruction: buildSystemPrompt(eventsContext, clubsContext, facultyContext, announcementsContext, timetableContext, canteenContext, userInfo)
     });
 
@@ -242,7 +242,7 @@ Format your response as JSON with this structure:
 Only return the JSON, nothing else.`;
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
     const result = await model.generateContent(prompt);
     const text = result.response.text().replace(/```json|```/g, "").trim();
 
