@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import posterImg from "../images/welcomepartyposter.png";
 
 function Dashboard() {
 
@@ -71,7 +72,7 @@ function Dashboard() {
               }}
             >
               <img 
-                src="/images/poster.jpg" 
+                src={posterImg}
                 alt="The Beginning - Ready Player Campus" 
                 className="img-fluid"
                 style={{

@@ -1,25 +1,26 @@
+import React, { useState, useEffect, Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import PageWrapper from "./components/PageWrapper";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import Navbar from "./components/Navbar";
-import Dashboard from "./components/Dashboard";
-import Events from "./pages/Events";
-import Clubs from "./pages/Clubs";
-import Faculty from "./pages/Faculty";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Profile from "./pages/Profile";
-import React, { useState, useEffect } from "react";
-import CanteenMenu from "./pages/CanteenMenu";
-import CampusMap from "./pages/CampusMap";
 import { onMessageListener } from "./firebase";
-import { ToastContainer, Toast } from "react-bootstrap";
-import AdminDashboard from "./pages/AdminDashboard";
-import AiAssistant from "./pages/AiAssistant";
-import Timetable from "./pages/Timetable";
-import Announcements from "./pages/Announcements";
-import Admissions from "./pages/Admissions";
+import { ToastContainer, Toast, Spinner } from "react-bootstrap";
+
+const Dashboard = lazy(() => import("./components/Dashboard"));
+const Events = lazy(() => import("./pages/Events"));
+const Clubs = lazy(() => import("./pages/Clubs"));
+const Faculty = lazy(() => import("./pages/Faculty"));
+const Login = lazy(() => import("./pages/Login"));
+const Signup = lazy(() => import("./pages/Signup"));
+const Profile = lazy(() => import("./pages/Profile"));
+const CanteenMenu = lazy(() => import("./pages/CanteenMenu"));
+const CampusMap = lazy(() => import("./pages/CampusMap"));
+const AdminDashboard = lazy(() => import("./pages/AdminDashboard"));
+const AiAssistant = lazy(() => import("./pages/AiAssistant"));
+const Timetable = lazy(() => import("./pages/Timetable"));
+const Announcements = lazy(() => import("./pages/Announcements"));
+const Admissions = lazy(() => import("./pages/Admissions"));
 
 // Protected route: must be logged in
 const ProtectedRoute = ({ children, adminOnly = false }) => {
@@ -39,39 +40,41 @@ function AppRoutes() {
       <Navbar />
       <main className="flex-grow-1">
         <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<PageWrapper><Dashboard /></PageWrapper>} />
-            <Route path="/events" element={<PageWrapper><Events /></PageWrapper>} />
-            <Route path="/timetable" element={<PageWrapper><Timetable /></PageWrapper>} />
-            <Route path="/clubs" element={<PageWrapper><Clubs /></PageWrapper>} />
-            <Route path="/canteen" element={<PageWrapper><CanteenMenu /></PageWrapper>} />
-            <Route path="/map" element={<PageWrapper><CampusMap /></PageWrapper>} />
-            <Route path="/faculty" element={<PageWrapper><Faculty /></PageWrapper>} />
-            <Route path="/admissions" element={<PageWrapper><Admissions /></PageWrapper>} />
-            <Route path="/announcements" element={<PageWrapper><Announcements /></PageWrapper>} />
-            <Route path="/login" element={<PageWrapper><Login /></PageWrapper>} />
-            <Route path="/signup" element={<PageWrapper><Signup /></PageWrapper>} />
-            <Route
-              path="/ai"
-              element={
-                <ProtectedRoute>
-                  <PageWrapper><AiAssistant /></PageWrapper>
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/profile"
-              element={
-                <ProtectedRoute>
-                  <PageWrapper><Profile /></PageWrapper>
-                </ProtectedRoute>
-              }
-            />
-            <Route 
-              path="/admin" 
-              element={user && user.role !== 'student' && user.role !== 'faculty' ? <PageWrapper><AdminDashboard /></PageWrapper> : <Navigate to="/" />} 
-            />
-          </Routes>
+          <Suspense fallback={<div className="d-flex justify-content-center align-items-center vh-100"><Spinner animation="border" variant="primary" /></div>}>
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<PageWrapper><Dashboard /></PageWrapper>} />
+              <Route path="/events" element={<PageWrapper><Events /></PageWrapper>} />
+              <Route path="/timetable" element={<PageWrapper><Timetable /></PageWrapper>} />
+              <Route path="/clubs" element={<PageWrapper><Clubs /></PageWrapper>} />
+              <Route path="/canteen" element={<PageWrapper><CanteenMenu /></PageWrapper>} />
+              <Route path="/map" element={<PageWrapper><CampusMap /></PageWrapper>} />
+              <Route path="/faculty" element={<PageWrapper><Faculty /></PageWrapper>} />
+              <Route path="/admissions" element={<PageWrapper><Admissions /></PageWrapper>} />
+              <Route path="/announcements" element={<PageWrapper><Announcements /></PageWrapper>} />
+              <Route path="/login" element={<PageWrapper><Login /></PageWrapper>} />
+              <Route path="/signup" element={<PageWrapper><Signup /></PageWrapper>} />
+              <Route
+                path="/ai"
+                element={
+                  <ProtectedRoute>
+                    <PageWrapper><AiAssistant /></PageWrapper>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <PageWrapper><Profile /></PageWrapper>
+                  </ProtectedRoute>
+                }
+              />
+              <Route 
+                path="/admin" 
+                element={user && user.role !== 'student' && user.role !== 'faculty' ? <PageWrapper><AdminDashboard /></PageWrapper> : <Navigate to="/" />} 
+              />
+            </Routes>
+          </Suspense>
         </AnimatePresence>
       </main>
     </div>
