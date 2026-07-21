@@ -7,6 +7,8 @@ import Navbar from "./components/Navbar";
 import { onMessageListener } from "./firebase";
 import { ToastContainer, Toast, Spinner } from "react-bootstrap";
 
+import Footer from "./components/Footer";
+
 const Dashboard = lazy(() => import("./components/Dashboard"));
 const Events = lazy(() => import("./pages/Events"));
 const Clubs = lazy(() => import("./pages/Clubs"));
@@ -77,6 +79,7 @@ function AppRoutes() {
           </Suspense>
         </AnimatePresence>
       </main>
+      <Footer />
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Navbar as BNavbar, Nav, Container, Button, NavDropdown } from "react-bootstrap";
 import { useAuth } from "../context/AuthContext";
@@ -6,6 +7,19 @@ import "./Navbar.css";
 function Navbar() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleLogout = () => {
     logout();
@@ -13,7 +27,7 @@ function Navbar() {
   };
 
   return (
-    <BNavbar expand="lg" className="mb-4 glass-navbar fixed-top" variant="dark">
+    <BNavbar expand="lg" className={`mb-4 fixed-top ${scrolled ? 'nav-scrolled' : 'glass-navbar'}`} variant="dark">
       <Container>
         <BNavbar.Brand as={Link} to="/" className="fw-bold fs-4 d-flex align-items-center">
           <span className="fs-3 me-2">🧭</span> Campus Compass AI
@@ -56,11 +70,12 @@ function Navbar() {
                 <span className="text-light ms-lg-3 me-2 fw-semibold">
                   👤 {user.name.split(" ")[0]}
                 </span>
-                <Link to="/profile" className="btn btn-outline-light btn-sm rounded-pill px-3 ms-lg-1">Profile</Link>
+                <Link to="/profile" className="btn btn-outline-primary btn-sm px-3 ms-lg-1">Profile</Link>
                 <Button
                   variant="outline-danger"
                   size="sm"
                   className="ms-lg-1 px-3"
+                  style={{ borderRadius: '12px' }}
                   onClick={handleLogout}
                 >
                   Logout
@@ -68,8 +83,8 @@ function Navbar() {
               </>
             ) : (
               <>
-                <Nav.Link as={Link} to="/login" className="btn btn-outline-primary text-white ms-lg-3 px-3 mt-2 mt-lg-0">Login</Nav.Link>
-                <Nav.Link as={Link} to="/signup" className="btn btn-primary ms-lg-2 px-3 mt-2 mt-lg-0 text-white">Sign Up</Nav.Link>
+                <Nav.Link as={Link} to="/login" className="btn btn-outline-primary ms-lg-3 px-3 mt-2 mt-lg-0">Login</Nav.Link>
+                <Nav.Link as={Link} to="/signup" className="btn btn-primary ms-lg-2 px-3 mt-2 mt-lg-0">Sign Up</Nav.Link>
               </>
             )}
           </Nav>

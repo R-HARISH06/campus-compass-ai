@@ -41,12 +41,13 @@ function Login() {
   };
 
   return (
-    <Container className="mt-5 pt-5">
+    <Container className="mt-5 pt-5 position-relative">
       <Row className="justify-content-center mt-4">
-        <Col md={6} lg={5}>
-          <Card className="animate-fade-in-up">
+        <Col md={7} lg={5}>
+          <Card className="animate-fade-in-up shadow-lg">
             <Card.Body className="p-5">
-              <h2 className="text-center mb-4 fw-bold gradient-text">Login</h2>
+              <h2 className="text-center mb-4 fw-bold gradient-text">Welcome Back</h2>
+              <p className="text-center text-muted mb-4">Please log in to your account</p>
 
               {error && (
                 <Alert variant="danger" className="py-2">
@@ -55,24 +56,22 @@ function Login() {
               )}
 
               <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="formLoginEmail">
-                  <Form.Label className="text-light">Email address</Form.Label>
+                <Form.Group className="mb-4" controlId="formLoginEmail">
+                  <Form.Label className="text-muted fw-semibold ms-1" style={{ fontSize: '0.9rem' }}>Email Address</Form.Label>
                   <Form.Control
                     type="email"
-                    placeholder="Enter email"
-                    className="bg-dark text-light border-secondary"
+                    placeholder="name@example.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                   />
                 </Form.Group>
 
-                <Form.Group className="mb-4" controlId="formLoginPassword">
-                  <Form.Label className="text-light">Password</Form.Label>
+                <Form.Group className="mb-5" controlId="formLoginPassword">
+                  <Form.Label className="text-muted fw-semibold ms-1" style={{ fontSize: '0.9rem' }}>Password</Form.Label>
                   <Form.Control
                     type="password"
-                    placeholder="Password"
-                    className="bg-dark text-light border-secondary"
+                    placeholder="Enter your password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
@@ -82,15 +81,15 @@ function Login() {
                 <Button
                   variant="primary"
                   type="submit"
-                  className="w-100 mb-3 py-2 fw-bold text-white"
+                  className="w-100 mb-4 py-3 fw-bold shadow-sm"
                   disabled={loading}
                 >
-                  {loading ? "Logging in..." : "Login"}
+                  {loading ? "Logging in..." : "Login to Dashboard"}
                 </Button>
 
                 <div className="text-center">
                   <span className="text-muted">Don't have an account? </span>
-                  <Link to="/signup" className="text-decoration-none fw-bold text-primary">
+                  <Link to="/signup" className="text-decoration-none fw-bold" style={{ color: 'var(--tertiary-accent)' }}>
                     Sign Up
                   </Link>
                 </div>

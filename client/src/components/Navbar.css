@@ -1,27 +1,109 @@
+/* Modern Navbar CSS */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-    background: #1e3a8a;
-    color: white;
+  padding: 1.2rem 1rem !important;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
 
-.logo {
-    font-size: 22px;
+.navbar.nav-scrolled {
+  padding: 0.6rem 1rem !important;
+  background: rgba(15, 23, 42, 0.85) !important;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.nav-links {
-    display: flex;
-    gap: 25px;
+.navbar .nav-link, 
+.navbar .dropdown-toggle {
+  color: var(--text-main) !important;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+  margin: 0 0.25rem;
 }
 
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
+/* Hover underline animation */
+.navbar .nav-link::after,
+.navbar .dropdown-toggle::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0px;
+  left: 50%;
+  background: var(--tertiary-accent);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  border-radius: 2px;
 }
 
-.nav-links a:hover {
-    text-decoration: underline;
+/* Specific fix for dropdown toggle arrow so it doesn't get messed up */
+.navbar .dropdown-toggle::after {
+  display: inline-block;
+  position: static;
+  width: 0;
+  height: 0;
+  margin-left: .255em;
+  vertical-align: .255em;
+  border-top: .3em solid;
+  border-right: .3em solid transparent;
+  border-bottom: 0;
+  border-left: .3em solid transparent;
+  transform: none;
+  background: none;
+}
+
+/* Fake underline for dropdown toggle */
+.navbar .dropdown-toggle::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0px;
+  left: 50%;
+  background: var(--tertiary-accent);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.navbar .nav-link:hover,
+.navbar .dropdown-toggle:hover {
+  color: var(--tertiary-accent) !important;
+}
+
+.navbar .nav-link:hover::after,
+.navbar .dropdown-toggle:hover::before {
+  width: 80%;
+}
+
+.navbar-brand {
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+.dropdown-menu {
+  background: rgba(30, 41, 59, 0.8) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-light) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5) !important;
+  padding: 0.5rem;
+}
+
+.dropdown-item {
+  color: var(--text-main) !important;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  padding: 0.5rem 1rem;
+}
+
+.dropdown-item:hover {
+  background: rgba(79, 70, 229, 0.2) !important;
+  color: var(--tertiary-accent) !important;
+  transform: translateX(4px);
 }

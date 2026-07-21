@@ -52,12 +52,13 @@ function Signup() {
   };
 
   return (
-    <Container className="mt-5 pt-5">
+    <Container className="mt-5 pt-5 position-relative">
       <Row className="justify-content-center mt-4">
-        <Col md={6} lg={5}>
-          <Card className="animate-fade-in-up">
+        <Col md={7} lg={6}>
+          <Card className="animate-fade-in-up shadow-lg">
             <Card.Body className="p-5">
-              <h2 className="text-center mb-4 fw-bold gradient-text">Sign Up</h2>
+              <h2 className="text-center mb-4 fw-bold gradient-text">Create Account</h2>
+              <p className="text-center text-muted mb-4">Join Campus Compass AI today</p>
 
               {error && (
                 <Alert variant="danger" className="py-2">
@@ -66,36 +67,33 @@ function Signup() {
               )}
 
               <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="formSignupName">
-                  <Form.Label className="text-light">Full Name</Form.Label>
+                <Form.Group className="mb-4" controlId="formSignupName">
+                  <Form.Label className="text-muted fw-semibold ms-1" style={{ fontSize: '0.9rem' }}>Full Name</Form.Label>
                   <Form.Control
                     type="text"
                     placeholder="Enter full name"
-                    className="bg-dark text-light border-secondary"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
                   />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formSignupEmail">
-                  <Form.Label className="text-light">Email address</Form.Label>
+                <Form.Group className="mb-4" controlId="formSignupEmail">
+                  <Form.Label className="text-muted fw-semibold ms-1" style={{ fontSize: '0.9rem' }}>Email Address</Form.Label>
                   <Form.Control
                     type="email"
-                    placeholder="Enter email"
-                    className="bg-dark text-light border-secondary"
+                    placeholder="name@example.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                   />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formSignupPassword">
-                  <Form.Label className="text-light">Password</Form.Label>
+                <Form.Group className="mb-4" controlId="formSignupPassword">
+                  <Form.Label className="text-muted fw-semibold ms-1" style={{ fontSize: '0.9rem' }}>Password</Form.Label>
                   <Form.Control
                     type="password"
                     placeholder="Password (min 6 chars)"
-                    className="bg-dark text-light border-secondary"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
@@ -103,10 +101,9 @@ function Signup() {
                   />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formSignupRole">
-                  <Form.Label className="text-light">Account Role</Form.Label>
+                <Form.Group className="mb-4" controlId="formSignupRole">
+                  <Form.Label className="text-muted fw-semibold ms-1" style={{ fontSize: '0.9rem' }}>Account Role</Form.Label>
                   <Form.Select
-                    className="bg-dark text-light border-secondary"
                     value={role}
                     onChange={(e) => {
                       setRole(e.target.value);
@@ -128,11 +125,10 @@ function Signup() {
 
                 {role !== "student" && (
                   <Form.Group className="mb-4" controlId="formSignupAdminCode">
-                    <Form.Label className="text-light">Secret Admin Code</Form.Label>
+                    <Form.Label className="text-muted fw-semibold ms-1" style={{ fontSize: '0.9rem' }}>Secret Admin Code</Form.Label>
                     <Form.Control
                       type="password"
                       placeholder="Required for non-student roles"
-                      className="bg-dark text-light border-secondary"
                       value={adminCode}
                       onChange={(e) => setAdminCode(e.target.value)}
                       required
@@ -141,14 +137,13 @@ function Signup() {
                 )}
 
                 {role === "student" && (
-                  <Row>
+                  <Row className="mb-2">
                     <Col>
-                      <Form.Group className="mb-3" controlId="formSignupDept">
-                        <Form.Label className="text-light">Department</Form.Label>
+                      <Form.Group className="mb-4" controlId="formSignupDept">
+                        <Form.Label className="text-muted fw-semibold ms-1" style={{ fontSize: '0.9rem' }}>Department</Form.Label>
                         <Form.Control
                           type="text"
                           placeholder="e.g. CS, IT"
-                          className="bg-dark text-light border-secondary"
                           value={department}
                           onChange={(e) => setDepartment(e.target.value)}
                         />
@@ -156,9 +151,8 @@ function Signup() {
                     </Col>
                     <Col>
                       <Form.Group className="mb-4" controlId="formSignupYear">
-                        <Form.Label className="text-light">Year</Form.Label>
+                        <Form.Label className="text-muted fw-semibold ms-1" style={{ fontSize: '0.9rem' }}>Year</Form.Label>
                         <Form.Select
-                          className="bg-dark text-light border-secondary"
                           value={year}
                           onChange={(e) => setYear(e.target.value)}
                         >
@@ -176,7 +170,7 @@ function Signup() {
                 <Button
                   variant="primary"
                   type="submit"
-                  className="w-100 mb-3 py-2 fw-bold text-white"
+                  className="w-100 mb-4 py-3 fw-bold shadow-sm"
                   disabled={loading}
                 >
                   {loading ? "Creating account..." : "Sign Up"}
@@ -184,7 +178,7 @@ function Signup() {
 
                 <div className="text-center">
                   <span className="text-muted">Already have an account? </span>
-                  <Link to="/login" className="text-decoration-none fw-bold text-primary">
+                  <Link to="/login" className="text-decoration-none fw-bold" style={{ color: 'var(--tertiary-accent)' }}>
                     Login
                   </Link>
                 </div>
