@@ -92,7 +92,7 @@ function AiAssistant() {
       setIsChatLoading(false);
     }
   };
-
+  return (
     <div className="container-fluid mt-5 pt-4 ai-dashboard d-flex flex-column flex-grow-1">
       <div className="row g-4 flex-grow-1 p-3">
         
