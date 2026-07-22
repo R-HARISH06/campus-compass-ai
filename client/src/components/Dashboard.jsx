@@ -43,7 +43,7 @@ function Dashboard() {
         className="position-absolute rounded-circle" 
         style={{
           width: '300px', height: '300px',
-          background: 'radial-gradient(circle, rgba(79, 70, 229, 0.15) 0%, rgba(79, 70, 229, 0) 70%)',
+          background: 'radial-gradient(circle, rgba(176, 38, 255, 0.15) 0%, rgba(176, 38, 255, 0) 70%)',
           top: '-10%', left: '-5%', filter: 'blur(40px)', zIndex: -1
         }}
       />
@@ -51,7 +51,7 @@ function Dashboard() {
         className="position-absolute rounded-circle" 
         style={{
           width: '250px', height: '250px',
-          background: 'radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, rgba(6, 182, 212, 0) 70%)',
+          background: 'radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, rgba(0, 240, 255, 0) 70%)',
           top: '20%', right: '5%', filter: 'blur(40px)', zIndex: -1
         }}
       />
@@ -78,19 +78,19 @@ function Dashboard() {
               style={{
                 borderRadius: '24px',
                 overflow: 'hidden',
-                boxShadow: '0 20px 40px -10px rgba(0,0,0,0.5), 0 0 30px rgba(79, 70, 229, 0.15)',
+                boxShadow: '0 20px 40px -10px rgba(0,0,0,0.8), 0 0 30px rgba(0, 240, 255, 0.1)',
                 transition: 'all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1)',
                 border: '1px solid var(--border-light)',
                 cursor: 'pointer'
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-10px) scale(1.02)';
-                e.currentTarget.style.boxShadow = '0 30px 60px -15px rgba(0,0,0,0.6), 0 0 50px rgba(79, 70, 229, 0.25)';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                e.currentTarget.style.boxShadow = '0 30px 60px -15px rgba(0,0,0,0.9), 0 0 50px rgba(0, 240, 255, 0.2)';
+                e.currentTarget.style.borderColor = 'rgba(0, 240, 255, 0.3)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                e.currentTarget.style.boxShadow = '0 20px 40px -10px rgba(0,0,0,0.5), 0 0 30px rgba(79, 70, 229, 0.15)';
+                e.currentTarget.style.boxShadow = '0 20px 40px -10px rgba(0,0,0,0.8), 0 0 30px rgba(0, 240, 255, 0.1)';
                 e.currentTarget.style.borderColor = 'var(--border-light)';
               }}
             >
@@ -114,12 +114,12 @@ function Dashboard() {
         {features.map((feature, index) => (
           <div key={index} className="col-md-4 mb-4">
             <Link to={feature.link} className="text-decoration-none">
-              <div className={`card h-100 hover-scale animate-fade-in-up delay-${(index % 4) + 1}`} style={{ cursor: "pointer" }}>
+              <div className={`card glass-card h-100 hover-scale animate-fade-in-up delay-${(index % 4) + 1}`} style={{ cursor: "pointer" }}>
                 <div className="card-body p-4 text-center d-flex flex-column justify-content-center">
-                  <div className="display-4 mb-3" style={{ filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.2))' }}>
+                  <div className="display-4 mb-3" style={{ filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.4))' }}>
                     {feature.title.split(" ")[0]}
                   </div>
-                  <h3 className="card-title h5 fw-bold text-white mb-2">
+                  <h3 className="card-title h5 fw-bold text-white mb-2" style={{fontFamily: 'Outfit'}}>
                     {feature.title.split(" ").slice(1).join(" ")}
                   </h3>
                   <p className="card-text text-muted mb-0" style={{ fontSize: '0.95rem' }}>

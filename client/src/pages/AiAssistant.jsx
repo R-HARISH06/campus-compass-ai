@@ -93,30 +93,29 @@ function AiAssistant() {
     }
   };
 
-  return (
     <div className="container-fluid mt-5 pt-4 ai-dashboard d-flex flex-column flex-grow-1">
       <div className="row g-4 flex-grow-1 p-3">
         
         {/* LEFT PANEL: Smart Recommendations */}
         <div className="col-lg-5 animate-fade-in-up">
-          <div className="glass-card h-100 d-flex flex-column p-4">
-            <h3 className="fw-bold gradient-text mb-2">✨ Smart Recommendations</h3>
+          <div className="glass-card h-100 d-flex flex-column p-4" style={{ boxShadow: '0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(0, 240, 255, 0.05)' }}>
+            <h3 className="fw-bold gradient-text mb-2" style={{fontFamily: 'Outfit'}}>✨ Smart Recommendations</h3>
             <p className="text-muted small mb-4">
-              Curated specifically for you based on your interest: <span className="text-info fw-bold">{user?.interests || "General"}</span>
+              Curated specifically for you based on your interest: <span className="fw-bold" style={{color: 'var(--primary-accent)'}}>{user?.interests || "General"}</span>
             </p>
 
             <div className="recommendations-scroll flex-grow-1 pe-2">
               {isRecLoading ? (
                 <div className="d-flex justify-content-center align-items-center h-100">
-                  <Spinner animation="grow" variant="info" />
+                  <Spinner animation="grow" style={{color: 'var(--primary-accent)'}} />
                 </div>
               ) : (
                 <>
-                  <h5 className="text-light fw-bold mb-3"><i className="bi bi-diagram-3-fill text-warning me-2"></i>Clubs for you</h5>
+                  <h5 className="text-light fw-bold mb-3" style={{fontFamily: 'Outfit'}}><i className="bi bi-diagram-3-fill me-2" style={{color: 'var(--secondary-accent)'}}></i>Clubs for you</h5>
                   {recommendations?.clubs?.length > 0 ? (
                     recommendations.clubs.map((club, i) => (
-                      <div key={i} className="rec-card club-rec mb-3 p-3 rounded-3 shadow-sm">
-                        <h6 className="fw-bold text-warning mb-1">{club.name}</h6>
+                      <div key={i} className="rec-card club-rec mb-3 p-3 rounded-3 shadow-sm" style={{background: 'rgba(176, 38, 255, 0.1)', border: '1px solid rgba(176, 38, 255, 0.2)'}}>
+                        <h6 className="fw-bold mb-1" style={{color: '#c4b5fd'}}>{club.name}</h6>
                         <p className="text-light small mb-0 opacity-75">{club.reason}</p>
                       </div>
                     ))
@@ -124,11 +123,11 @@ function AiAssistant() {
                     <p className="text-muted small">No specific club matches found.</p>
                   )}
 
-                  <h5 className="text-light fw-bold mb-3 mt-4"><i className="bi bi-calendar-event-fill text-danger me-2"></i>Events for you</h5>
+                  <h5 className="text-light fw-bold mb-3 mt-4" style={{fontFamily: 'Outfit'}}><i className="bi bi-calendar-event-fill me-2" style={{color: 'var(--tertiary-accent)'}}></i>Events for you</h5>
                   {recommendations?.events?.length > 0 ? (
                     recommendations.events.map((event, i) => (
-                      <div key={i} className="rec-card event-rec mb-3 p-3 rounded-3 shadow-sm">
-                        <h6 className="fw-bold text-danger mb-1">{event.title}</h6>
+                      <div key={i} className="rec-card event-rec mb-3 p-3 rounded-3 shadow-sm" style={{background: 'rgba(255, 51, 102, 0.1)', border: '1px solid rgba(255, 51, 102, 0.2)'}}>
+                        <h6 className="fw-bold mb-1" style={{color: '#ff85a1'}}>{event.title}</h6>
                         <p className="text-light small mb-0 opacity-75">{event.reason}</p>
                       </div>
                     ))
@@ -143,13 +142,13 @@ function AiAssistant() {
 
         {/* RIGHT PANEL: Chatbot */}
         <div className="col-lg-7 animate-fade-in-up delay-1">
-          <div className="glass-card h-100 d-flex flex-column">
+          <div className="glass-card h-100 d-flex flex-column" style={{ boxShadow: '0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(176, 38, 255, 0.05)' }}>
             {/* Chat Header */}
-            <div className="chat-header p-3 border-bottom border-secondary d-flex align-items-center">
-              <div className="ai-avatar me-3">🤖</div>
+            <div className="chat-header p-3 border-bottom d-flex align-items-center" style={{borderColor: 'rgba(255,255,255,0.05) !important'}}>
+              <div className="ai-avatar me-3" style={{background: 'rgba(0, 240, 255, 0.15)', border: '1px solid var(--primary-accent)', borderRadius: '50%', padding: '10px', boxShadow: '0 0 15px rgba(0, 240, 255, 0.3)'}}>🤖</div>
               <div>
-                <h5 className="mb-0 text-light fw-bold">Campus Compass Assistant</h5>
-                <small className="text-success">● Online</small>
+                <h5 className="mb-0 text-light fw-bold" style={{fontFamily: 'Outfit'}}>Campus Compass Assistant</h5>
+                <small style={{color: 'var(--primary-accent)'}}>● Online</small>
               </div>
             </div>
 
@@ -157,8 +156,16 @@ function AiAssistant() {
             <div className="chat-messages flex-grow-1 p-4 overflow-auto">
               {messages.map((msg, index) => (
                 <div key={index} className={`message-wrapper d-flex mb-4 ${msg.sender === "user" ? "justify-content-end" : "justify-content-start"}`}>
-                  {msg.sender === "model" && <div className="ai-avatar-small me-2 mt-auto">🤖</div>}
-                  <div className={`message-bubble p-3 shadow-sm ${msg.sender === "user" ? "bg-primary text-white" : "bg-dark text-light border border-secondary"}`}>
+                  {msg.sender === "model" && <div className="ai-avatar-small me-2 mt-auto" style={{fontSize: '1.2rem'}}>🤖</div>}
+                  <div 
+                    className={`message-bubble p-3 shadow-sm ${msg.sender === "user" ? "text-dark" : "text-light"}`}
+                    style={{
+                      background: msg.sender === "user" ? 'linear-gradient(135deg, var(--primary-accent), var(--secondary-accent))' : 'rgba(15, 23, 42, 0.6)',
+                      border: msg.sender === "user" ? 'none' : '1px solid var(--border-light)',
+                      borderRadius: msg.sender === "user" ? '20px 20px 4px 20px' : '20px 20px 20px 4px',
+                      color: msg.sender === "user" ? '#000 !important' : '#fff'
+                    }}
+                  >
                     {msg.sender === "user" ? (
                       msg.text
                     ) : (
@@ -172,8 +179,8 @@ function AiAssistant() {
               {isChatLoading && (
                 <div className="message-wrapper d-flex mb-4 justify-content-start">
                   <div className="ai-avatar-small me-2 mt-auto">🤖</div>
-                  <div className="message-bubble typing-indicator bg-dark border border-secondary p-3">
-                    <span></span><span></span><span></span>
+                  <div className="message-bubble typing-indicator p-3" style={{background: 'rgba(15, 23, 42, 0.6)', border: '1px solid var(--border-light)', borderRadius: '20px 20px 20px 4px'}}>
+                    <span style={{background: 'var(--primary-accent)'}}></span><span style={{background: 'var(--primary-accent)'}}></span><span style={{background: 'var(--primary-accent)'}}></span>
                   </div>
                 </div>
               )}
@@ -181,11 +188,12 @@ function AiAssistant() {
             </div>
 
             {/* Chat Input */}
-            <div className="chat-input p-3 border-top border-secondary">
+            <div className="chat-input p-3 border-top" style={{borderColor: 'rgba(255,255,255,0.05) !important', background: 'rgba(11, 14, 20, 0.4)'}}>
               <form onSubmit={handleSendMessage} className="d-flex gap-2">
                 <input
                   type="text"
-                  className="form-control modern-input text-light"
+                  className="form-control text-light"
+                  style={{background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)'}}
                   placeholder="Ask about admissions, hostel rules, or finding a faculty..."
                   value={input}
                   onChange={(e) => setInput(e.target.value)}

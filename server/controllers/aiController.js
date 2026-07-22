@@ -58,6 +58,7 @@ CONTACT:
 `;
 
 const buildSystemPrompt = (eventsContext, clubsContext, facultyContext, announcementsContext, timetableContext, canteenContext, user) => {
+  const currentDay = new Date().toLocaleDateString('en-US', { weekday: 'long', timeZone: 'Asia/Kolkata' });
   const userContext = user
     ? `\nCURRENT STUDENT: Name: ${user.name}, Department: ${user.department || "Not set"}, Year: ${user.year || "Not set"}, Interests: ${user.interests || "Not specified"}.`
     : "\nCURRENT STUDENT: Not logged in (public query).";
@@ -65,6 +66,7 @@ const buildSystemPrompt = (eventsContext, clubsContext, facultyContext, announce
   return `You are the Campus Compass AI Assistant for Saranathan College of Engineering, Trichy.
 You are a friendly, knowledgeable campus guide who helps students with all campus-related questions.
 Always be helpful, clear, and concise. Use bullet points or numbered lists for clarity when needed.
+CURRENT DAY: ${currentDay}
 ${userContext}
 
 ${CAMPUS_KNOWLEDGE}
@@ -89,11 +91,12 @@ ${canteenContext || "Canteen menu not available."}
 
 INSTRUCTIONS:
 - For admission questions: Walk students through the process step by step.
-- For faculty questions: Provide name, designation, department, and email.
+- For faculty questions: Provide name, designation, department, and email. NEVER provide or guess login credentials, passwords, or personal details.
 - For events: Mention venue, date, and how to register.
 - For clubs: Mention faculty coordinator, meeting day, and contact email.
-- For timetable questions: Tell the student their specific classes based on their department and year if available in context.
-- For canteen questions: List the available items and their prices.
+- For timetable questions: Tell the student their specific classes based on their department and year. If asked about "today", use the CURRENT DAY provided above.
+- For canteen questions: List the available items and their prices. Do NOT provide administrative details about the canteen or its management.
+- CRITICAL: NEVER provide admin details, system passwords, or admin portal links to anyone.
 - If you cannot find specific information, politely say so and suggest the student visit the college office.
 - Never make up faculty names, emails, timetable schedules, or specific data not in your context.`;
 };
