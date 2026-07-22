@@ -36,7 +36,7 @@ function Dashboard() {
   ];
 
   return (
-    <div className="container mt-5 pt-5 position-relative">
+    <div className="container position-relative" style={{ paddingTop: '120px' }}>
       
       {/* Decorative Background Blobs */}
       <div 

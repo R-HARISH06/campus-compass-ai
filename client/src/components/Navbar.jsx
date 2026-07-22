@@ -29,10 +29,10 @@ function Navbar() {
   return (
     <BNavbar expand="lg" className={`mb-4 fixed-top ${scrolled ? 'nav-scrolled' : 'glass-navbar'}`} variant="dark">
       <Container>
-        <BNavbar.Brand as={Link} to="/" className="fw-bold fs-4 d-flex align-items-center">
+        <BNavbar.Toggle aria-controls="basic-navbar-nav" className="me-2" />
+        <BNavbar.Brand as={Link} to="/" className="fw-bold fs-4 d-flex align-items-center me-auto">
           <span className="fs-3 me-2">🧭</span> Campus Compass AI
         </BNavbar.Brand>
-        <BNavbar.Toggle aria-controls="basic-navbar-nav" />
         <BNavbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto align-items-center">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
