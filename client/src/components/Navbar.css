@@ -114,3 +114,32 @@
   transform: translateX(4px);
   text-shadow: 0 0 5px rgba(0, 240, 255, 0.3);
 }
+
+/* Mobile responsive fixes */
+@media (max-width: 991px) {
+  .navbar-nav {
+    align-items: flex-start !important;
+    padding-top: 1rem;
+  }
+  
+  .navbar .nav-link, 
+  .navbar .dropdown-toggle {
+    margin: 0.5rem 0;
+    width: 100%;
+    text-align: left;
+  }
+
+  .dropdown-menu {
+    position: static !important;
+    background: rgba(0, 0, 0, 0.2) !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+
+  .navbar-brand {
+    font-size: 1.25rem !important;
+  }
+}
