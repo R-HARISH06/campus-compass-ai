@@ -39,7 +39,7 @@ function Timetable() {
   };
 
   return (
-    <div className="container mt-5 pt-5">
+    <div className="container position-relative" style={{ paddingTop: '120px' }}>
       <div className="text-center mb-4 animate-fade-in-up">
         <h1 className="display-5 fw-bold gradient-text" style={{fontFamily: 'Outfit'}}>Weekly Timetable</h1>
         <p className="text-muted">Anna University (Regulation 2021) • 9:15 AM to 4:45 PM</p>

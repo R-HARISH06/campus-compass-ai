@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Admissions() {
   return (
-    <Container className="mt-5 pt-5 mb-5">
+    <Container className="mb-5 position-relative" style={{ paddingTop: '120px' }}>
       <div className="text-center mb-5 animate-fade-in-up">
         <h1 className="display-4 fw-bold gradient-text" style={{fontFamily: 'Outfit'}}>Admissions & Registration</h1>
         <p className="lead text-muted">Your guide to joining Campus Compass University</p>
@@ -12,7 +12,7 @@ function Admissions() {
 
       <Row className="g-4">
         {/* Step-by-Step Registration Process */}
-        <Col lg={8} className="animate-fade-in-up delay-1">
+        <Col lg={12} className="animate-fade-in-up delay-1">
           <Card className="h-100 glass-card text-white border-0 shadow-lg" style={{ boxShadow: '0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(0, 240, 255, 0.05)', border: '1px solid rgba(0, 240, 255, 0.1)', background: 'rgba(11, 14, 20, 0.4)' }}>
             <Card.Body className="p-4 p-md-5">
               <h2 className="fw-bold mb-4 gradient-text" style={{fontFamily: 'Outfit'}}>📝 How Registration Works</h2>
@@ -60,40 +60,7 @@ function Admissions() {
           </Card>
         </Col>
 
-        {/* Fee Structure Table */}
-        <Col lg={4} className="animate-fade-in-up delay-2">
-          <Card className="h-100 glass-card text-white shadow-lg" style={{ boxShadow: '0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(176, 38, 255, 0.05)', border: '1px solid rgba(176, 38, 255, 0.1)', background: 'rgba(11, 14, 20, 0.4)' }}>
-            <Card.Body className="p-4 p-md-5">
-              <h2 className="fw-bold mb-4 text-center" style={{fontFamily: 'Outfit', color: 'var(--secondary-accent)'}}>💰 Fee Details</h2>
-              <p className="text-muted text-center mb-4">Estimated tuition and fees per semester for the 2026-2027 academic year.</p>
-              
-              <Table variant="dark" bordered hover className="mb-4">
-                <tbody>
-                  <tr>
-                    <td className="text-light">Tuition (Undergrad)</td>
-                    <td className="text-end fw-bold text-success">$4,500</td>
-                  </tr>
-                  <tr>
-                    <td className="text-light">Tuition (Postgrad)</td>
-                    <td className="text-end fw-bold text-success">$5,800</td>
-                  </tr>
-                  <tr>
-                    <td className="text-light">Hostel / Housing</td>
-                    <td className="text-end fw-bold text-success">$1,200</td>
-                  </tr>
-                  <tr>
-                    <td className="text-light">Library & Tech Fee</td>
-                    <td className="text-end fw-bold text-success">$300</td>
-                  </tr>
-                  <tr>
-                    <td className="text-light">Canteen Meal Plan</td>
-                    <td className="text-end fw-bold text-success">$800</td>
-                  </tr>
-                </tbody>
-              </Table>
-            </Card.Body>
-          </Card>
-        </Col>
+        {/* Fee Structure Table Removed */}
       </Row>
 
       {/* FAQ Section */}

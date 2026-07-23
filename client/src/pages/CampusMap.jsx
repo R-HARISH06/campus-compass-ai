@@ -100,7 +100,7 @@ const locations = [
 
 function CampusMap() {
   return (
-    <div className="container mt-5 pt-4 mb-5">
+    <div className="container mb-5 position-relative" style={{ paddingTop: '120px' }}>
       <div className="d-flex justify-content-between align-items-center mb-4 animate-fade-in-up">
         <h1 className="fw-bold gradient-text" style={{fontFamily: 'Outfit'}}><i className="bi bi-geo-alt-fill me-2" style={{color: 'var(--tertiary-accent)'}}></i> Campus Map</h1>
       </div>
