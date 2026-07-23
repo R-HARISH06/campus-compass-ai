@@ -93,7 +93,7 @@ function AiAssistant() {
     }
   };
   return (
-    <div className="container-fluid ai-dashboard d-flex flex-column flex-grow-1 position-relative" style={{ paddingTop: '120px' }}>
+    <div className="container-fluid ai-dashboard d-flex flex-column flex-grow-1 position-relative page-wrapper" >
       <div className="row g-4 flex-grow-1 p-3">
         
         {/* LEFT PANEL: Smart Recommendations */}

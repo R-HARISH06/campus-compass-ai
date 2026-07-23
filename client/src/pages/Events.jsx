@@ -149,7 +149,7 @@ function Events() {
   };
 
   return (
-    <div className="container position-relative" style={{ paddingTop: '120px' }}>
+    <div className="container position-relative page-wrapper" >
       <h1 className="display-5 fw-bold mb-4 gradient-text animate-fade-in-up" style={{fontFamily: 'Outfit'}}>
         📅 Upcoming Events
       </h1>

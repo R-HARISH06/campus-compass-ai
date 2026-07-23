@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Admissions() {
   return (
-    <Container className="mb-5 position-relative" style={{ paddingTop: '120px' }}>
+    <Container className="mb-5 position-relative page-wrapper" >
       <div className="text-center mb-5 animate-fade-in-up">
         <h1 className="display-4 fw-bold gradient-text" style={{fontFamily: 'Outfit'}}>Admissions & Registration</h1>
         <p className="lead text-muted">Your guide to joining Campus Compass University</p>

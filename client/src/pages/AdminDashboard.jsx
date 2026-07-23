@@ -100,7 +100,7 @@ function AdminDashboard() {
 
   if (loading) {
     return (
-      <Container className="text-center position-relative" style={{ paddingTop: '120px' }}>
+      <Container className="text-center position-relative page-wrapper" >
         <Spinner animation="border" variant="primary" className="mt-5" />
         <p className="mt-2 text-muted">Loading Dashboard...</p>
       </Container>
@@ -108,7 +108,7 @@ function AdminDashboard() {
   }
 
   return (
-    <Container className=" position-relative" style={{ paddingTop: '120px' }}>
+    <Container className=" position-relative page-wrapper" >
       <Row className="mb-4 animate-fade-in-up">
         <Col>
           <h2 className="fw-bold gradient-text" style={{fontFamily: 'Outfit'}}>Admin Dashboard</h2>

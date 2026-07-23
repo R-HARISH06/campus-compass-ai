@@ -177,7 +177,7 @@ function Profile() {
 
   if (loading) {
     return (
-      <div className="container text-center position-relative" style={{ paddingTop: '120px' }}>
+      <div className="container text-center position-relative page-wrapper" >
         <Spinner animation="border" variant="primary" />
       </div>
     );
@@ -186,7 +186,7 @@ function Profile() {
   const rsvpedEvents = allEvents.filter(e => rsvps.includes(e.id));
 
   return (
-    <div className="container position-relative" style={{ paddingTop: '120px' }}>
+    <div className="container position-relative page-wrapper" >
       <h1 className="display-5 fw-bold mb-4 gradient-text animate-fade-in-up" style={{fontFamily: 'Outfit'}}>
         👤 My Profile
       </h1>
@@ -199,7 +199,7 @@ function Profile() {
 
       <div className="row mb-5 animate-fade-in-up delay-1">
         <div className="col-12">
-          <div className="glass-card p-4 text-white position-relative" style={{ boxShadow: '0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(0, 240, 255, 0.05)', border: '1px solid rgba(0, 240, 255, 0.1)', background: 'rgba(11, 14, 20, 0.4)' }}>
+          <div className="glass-card p-4 text-white position-relative page-wrapper" style={{ boxShadow: '0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(0, 240, 255, 0.05)', border: '1px solid rgba(0, 240, 255, 0.1)', background: 'rgba(11, 14, 20, 0.4)' }}>
             <Button 
               variant="outline-light" 
               size="sm" 

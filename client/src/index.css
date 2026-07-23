@@ -299,3 +299,13 @@ h1, h2, h3, h4, h5, h6, .display-1, .display-2, .display-3, .display-4, .display
     border-radius: 8px;
   }
 }
+
+/* Global Page Wrapper Padding */
+.page-wrapper {
+  padding-top: 120px !important;
+}
+@media (max-width: 991px) {
+  .page-wrapper {
+    padding-top: 150px !important;
+  }
+}

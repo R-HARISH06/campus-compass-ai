@@ -36,7 +36,7 @@ function Dashboard() {
   ];
 
   return (
-    <div className="container position-relative" style={{ paddingTop: '120px' }}>
+    <div className="container position-relative page-wrapper" >
       
       {/* Decorative Background Blobs */}
       <div 
@@ -74,7 +74,7 @@ function Dashboard() {
         <div className="row justify-content-center animate-fade-in-up delay-1">
           <div className="col-12 col-md-10 col-lg-8">
             <div 
-              className="poster-wrapper position-relative"
+              className="poster-wrapper position-relative page-wrapper"
               style={{
                 borderRadius: '24px',
                 overflow: 'hidden',

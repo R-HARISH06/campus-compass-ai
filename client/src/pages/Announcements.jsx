@@ -35,7 +35,7 @@ function Announcements() {
   };
 
   if (loading) return (
-    <Container className=" position-relative" style={{ paddingTop: '120px' }}>
+    <Container className=" position-relative page-wrapper" >
       <Row className="mb-4 animate-fade-in-up">
         <Col>
           <h2 className="fw-bold gradient-text" style={{fontFamily: 'Outfit'}}>Campus Announcements</h2>
@@ -62,7 +62,7 @@ function Announcements() {
   );
 
   return (
-    <Container className=" position-relative" style={{ paddingTop: '120px' }}>
+    <Container className=" position-relative page-wrapper" >
       <Row className="mb-4 animate-fade-in-up">
         <Col>
           <h2 className="fw-bold gradient-text" style={{fontFamily: 'Outfit'}}>Campus Announcements</h2>

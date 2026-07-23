@@ -49,7 +49,7 @@ function Faculty() {
   };
 
   return (
-    <div className="container position-relative" style={{ paddingTop: '120px' }}>
+    <div className="container position-relative page-wrapper" >
       <div className="text-center mb-5 animate-fade-in-up">
         <h1 className="display-5 fw-bold gradient-text" style={{fontFamily: 'Outfit'}}>Faculty Directory</h1>
         <p className="lead text-muted">Find your faculty members easily</p>

@@ -52,7 +52,7 @@ function Signup() {
   };
 
   return (
-    <Container className="position-relative position-relative" style={{ paddingTop: '120px' }}>
+    <Container className="position-relative page-wrapper position-relative page-wrapper" >
       <Row className="justify-content-center mt-4">
         <Col md={7} lg={6}>
           <Card className="animate-fade-in-up shadow-lg glass-card border-0" style={{ boxShadow: '0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(0, 240, 255, 0.05)', border: '1px solid rgba(0, 240, 255, 0.1)', background: 'rgba(11, 14, 20, 0.4)' }}>

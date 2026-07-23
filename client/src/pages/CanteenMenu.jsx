@@ -23,7 +23,7 @@ function CanteenMenu() {
 
   if (loading) {
     return (
-      <div className="container text-center h-100 d-flex justify-content-center align-items-center position-relative" style={{ paddingTop: '120px' }}>
+      <div className="container text-center h-100 d-flex justify-content-center align-items-center position-relative page-wrapper" >
         <Spinner animation="border" variant="success" />
       </div>
     );
@@ -32,7 +32,7 @@ function CanteenMenu() {
   const filteredMenu = filter === "all" ? menu : menu.filter(item => item.item_type === filter);
 
   return (
-    <div className="container position-relative" style={{ paddingTop: '120px' }}>
+    <div className="container position-relative page-wrapper" >
       <div className="d-flex justify-content-between align-items-center mb-4 animate-fade-in-up">
         <h1 className="fw-bold gradient-text" style={{fontFamily: 'Outfit'}}><i className="bi bi-cup-hot-fill me-2" style={{color: 'var(--tertiary-accent)'}}></i> Campus Canteen Menu</h1>
       </div>
