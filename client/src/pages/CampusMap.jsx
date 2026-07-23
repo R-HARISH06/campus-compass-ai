@@ -102,14 +102,14 @@ function CampusMap() {
   return (
     <div className="container mt-5 pt-4 mb-5">
       <div className="d-flex justify-content-between align-items-center mb-4 animate-fade-in-up">
-        <h1 className="fw-bold gradient-text"><i className="bi bi-geo-alt-fill me-2 text-danger"></i> Campus Map</h1>
+        <h1 className="fw-bold gradient-text" style={{fontFamily: 'Outfit'}}><i className="bi bi-geo-alt-fill me-2" style={{color: 'var(--tertiary-accent)'}}></i> Campus Map</h1>
       </div>
       
       <p className="text-muted mb-4 animate-fade-in-up">
         Navigate through Saranathan College of Engineering, Panchapur, Trichy. Use this interactive map to find departments, hostels, and the canteen.
       </p>
 
-      <div className="glass-card border-0 shadow-lg animate-fade-in-up delay-1 overflow-hidden" style={{ borderRadius: "20px" }}>
+      <div className="glass-card border-0 shadow-lg animate-fade-in-up delay-1 overflow-hidden" style={{ borderRadius: "20px", boxShadow: '0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(0, 240, 255, 0.05)', border: '1px solid rgba(0, 240, 255, 0.1)' }}>
         <div style={{ height: "600px", width: "100%" }}>
           <MapContainer center={centerPosition} zoom={18} scrollWheelZoom={false} style={{ height: "100%", width: "100%" }}>
             

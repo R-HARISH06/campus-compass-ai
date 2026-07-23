@@ -41,7 +41,7 @@ function Timetable() {
   return (
     <div className="container mt-5 pt-5">
       <div className="text-center mb-4 animate-fade-in-up">
-        <h1 className="display-5 fw-bold gradient-text">Weekly Timetable</h1>
+        <h1 className="display-5 fw-bold gradient-text" style={{fontFamily: 'Outfit'}}>Weekly Timetable</h1>
         <p className="text-muted">Anna University (Regulation 2021) • 9:15 AM to 4:45 PM</p>
       </div>
 
@@ -78,7 +78,7 @@ function Timetable() {
       {error && <div className="alert alert-danger text-center">{error}</div>}
 
       {!loading && timetableData && (
-        <div className="table-responsive animate-fade-in-up delay-2 glass-card p-3">
+        <div className="table-responsive animate-fade-in-up delay-2 glass-card p-3" style={{ boxShadow: '0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(0, 240, 255, 0.05)', border: '1px solid rgba(0, 240, 255, 0.1)' }}>
           <table className="table table-borderless table-hover text-center align-middle text-white mb-0" style={{ minWidth: "1200px" }}>
             <thead className="border-bottom border-secondary">
               <tr>

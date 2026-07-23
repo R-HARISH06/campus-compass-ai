@@ -71,7 +71,7 @@ function Clubs() {
 
   return (
     <div className="container mt-5 pt-5">
-      <h1 className="display-5 fw-bold mb-4 gradient-text animate-fade-in-up">
+      <h1 className="display-5 fw-bold mb-4 gradient-text animate-fade-in-up" style={{fontFamily: 'Outfit'}}>
         🎓 Student Clubs
       </h1>
       {msg.text && <Alert variant={msg.type} onClose={() => setMsg({ type: "", text: "" })} dismissible>{msg.text}</Alert>}
@@ -98,25 +98,34 @@ function Clubs() {
         ) : (
           clubs.map((club, index) => (
             <div key={club.id} className="col-md-6">
-              <div className={"glass-card h-100 animate-fade-in-up delay-" + ((index % 4) + 1)}>
-                <div className="card-body p-4">
-                  <h2 className="card-title h4 fw-bold">
-                    {club.name}
-                  </h2>
-                  <p className="card-text text-muted mt-3">
-                    {club.description}
-                  </p>
-                  <ul className="list-unstyled mb-0 text-muted">
-                    <li className="mb-2"><strong className="text-light">👨‍🏫 Faculty:</strong> {club.faculty_coordinator}</li>
-                    <li className="mb-2"><strong className="text-light">📅 Meeting:</strong> {club.meeting_day}</li>
-                    <li><strong className="text-light">📧 Email:</strong> <a href={"mailto:" + club.contact_email} className="text-decoration-none text-primary">{club.contact_email}</a></li>
-                  </ul>
+              <div 
+                className={"glass-card h-100 animate-fade-in-up delay-" + ((index % 4) + 1)}
+                style={{ 
+                  boxShadow: '0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(176, 38, 255, 0.05)',
+                  border: '1px solid rgba(176, 38, 255, 0.1)'
+                }}
+              >
+                <div className="card-body p-4 d-flex flex-column justify-content-between">
+                  <div>
+                    <h2 className="card-title h4 fw-bold" style={{fontFamily: 'Outfit', color: 'var(--secondary-accent)'}}>
+                      {club.name}
+                    </h2>
+                    <p className="card-text text-light mt-3 opacity-75">
+                      {club.description}
+                    </p>
+                    <div className="d-flex flex-column gap-2 mt-4 p-3 rounded-3" style={{background: 'rgba(11, 14, 20, 0.4)', border: '1px solid rgba(255,255,255,0.05)'}}>
+                      <div className="mb-0 text-muted small"><strong className="text-light"><i className="bi bi-person-badge-fill me-1" style={{color: 'var(--primary-accent)'}}></i> Faculty:</strong> {club.faculty_coordinator}</div>
+                      <div className="mb-0 text-muted small"><strong className="text-light"><i className="bi bi-calendar-event-fill me-1" style={{color: 'var(--tertiary-accent)'}}></i> Meeting:</strong> {club.meeting_day}</div>
+                      <div className="mb-0 text-muted small"><strong className="text-light"><i className="bi bi-envelope-fill me-1 text-info"></i> Email:</strong> <a href={"mailto:" + club.contact_email} className="text-decoration-none text-info">{club.contact_email}</a></div>
+                    </div>
+                  </div>
                   {user && (
                     <div className="mt-4 text-end">
                       {myClubs.includes(club.id) ? (
                         <Button
                           variant="outline-danger"
                           className="px-4 fw-bold"
+                          style={{boxShadow: '0 0 10px rgba(255, 51, 102, 0.2)'}}
                           disabled={loadingId === club.id}
                           onClick={() => handleLeave(club)}
                         >
@@ -125,11 +134,12 @@ function Clubs() {
                       ) : (
                         <Button
                           variant="primary"
-                          className="px-4 text-white"
+                          className="px-4 text-white shadow-sm fw-bold"
+                          style={{background: 'linear-gradient(135deg, var(--secondary-accent), var(--primary-accent))', border: 'none'}}
                           disabled={loadingId === club.id}
                           onClick={() => handleJoin(club)}
                         >
-                          {loadingId === club.id ? <Spinner size="sm" animation="border" /> : "Join Club"}
+                          {loadingId === club.id ? <Spinner size="sm" animation="border" /> : "Join Club ✨"}
                         </Button>
                       )}
                     </div>

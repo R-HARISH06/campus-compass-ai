@@ -34,7 +34,7 @@ function CanteenMenu() {
   return (
     <div className="container mt-5 pt-4">
       <div className="d-flex justify-content-between align-items-center mb-4 animate-fade-in-up">
-        <h1 className="fw-bold gradient-text"><i className="bi bi-cup-hot-fill me-2 text-warning"></i> Campus Canteen Menu</h1>
+        <h1 className="fw-bold gradient-text" style={{fontFamily: 'Outfit'}}><i className="bi bi-cup-hot-fill me-2" style={{color: 'var(--tertiary-accent)'}}></i> Campus Canteen Menu</h1>
       </div>
       
       <p className="text-muted animate-fade-in-up">Freshly prepared meals and snacks for students and faculty. Don't worry about lunch, we've got you covered!</p>
@@ -80,20 +80,23 @@ function CanteenMenu() {
         ) : (
           filteredMenu.map(item => (
             <div key={item.id} className="col-md-4 col-lg-3">
-              <div className={`glass-card h-100 menu-card hover-scale ${!item.is_available ? 'opacity-50' : ''}`}>
+              <div 
+                className={`glass-card h-100 menu-card hover-scale ${!item.is_available ? 'opacity-50' : ''}`}
+                style={{ boxShadow: '0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(0, 240, 255, 0.05)', border: '1px solid rgba(0, 240, 255, 0.1)', background: 'rgba(11, 14, 20, 0.4)' }}
+              >
                 <div className="card-body d-flex flex-column p-4">
                   <div className="d-flex justify-content-between align-items-start mb-2">
-                    <h5 className="card-title fw-bold text-light mb-0">{item.item_name}</h5>
+                    <h5 className="card-title fw-bold mb-0" style={{fontFamily: 'Outfit', color: 'var(--primary-accent)'}}>{item.item_name}</h5>
                     {item.is_available ? (
-                      <Badge bg="success">Available</Badge>
+                      <Badge bg="success" className="shadow-sm">Available</Badge>
                     ) : (
-                      <Badge bg="danger">Sold Out</Badge>
+                      <Badge bg="danger" className="shadow-sm">Sold Out</Badge>
                     )}
                   </div>
-                  <Badge bg="secondary" className="mb-3 align-self-start">{item.item_type.toUpperCase()}</Badge>
+                  <Badge className="mb-3 align-self-start border-0 text-dark" style={{background: 'var(--secondary-accent)'}}>{item.item_type.toUpperCase()}</Badge>
                   
-                  <div className="mt-auto d-flex justify-content-between align-items-center pt-3 border-top border-secondary">
-                    <span className="fs-4 fw-bold text-warning">₹{Number(item.price).toFixed(2)}</span>
+                  <div className="mt-auto d-flex justify-content-between align-items-center pt-3 border-top" style={{borderColor: 'rgba(255,255,255,0.05) !important'}}>
+                    <span className="fs-4 fw-bold" style={{fontFamily: 'Outfit', color: 'var(--tertiary-accent)'}}>₹{Number(item.price).toFixed(2)}</span>
                   </div>
                 </div>
               </div>

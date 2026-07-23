@@ -6,16 +6,16 @@ function Admissions() {
   return (
     <Container className="mt-5 pt-5 mb-5">
       <div className="text-center mb-5 animate-fade-in-up">
-        <h1 className="display-4 fw-bold gradient-text">Admissions & Registration</h1>
+        <h1 className="display-4 fw-bold gradient-text" style={{fontFamily: 'Outfit'}}>Admissions & Registration</h1>
         <p className="lead text-muted">Your guide to joining Campus Compass University</p>
       </div>
 
       <Row className="g-4">
         {/* Step-by-Step Registration Process */}
         <Col lg={8} className="animate-fade-in-up delay-1">
-          <Card className="h-100 glass-card text-white border-0 shadow-lg">
+          <Card className="h-100 glass-card text-white border-0 shadow-lg" style={{ boxShadow: '0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(0, 240, 255, 0.05)', border: '1px solid rgba(0, 240, 255, 0.1)', background: 'rgba(11, 14, 20, 0.4)' }}>
             <Card.Body className="p-4 p-md-5">
-              <h2 className="fw-bold mb-4 gradient-text">📝 How Registration Works</h2>
+              <h2 className="fw-bold mb-4 gradient-text" style={{fontFamily: 'Outfit'}}>📝 How Registration Works</h2>
               
               <div className="d-flex mb-4">
                 <div className="me-3">
@@ -62,9 +62,9 @@ function Admissions() {
 
         {/* Fee Structure Table */}
         <Col lg={4} className="animate-fade-in-up delay-2">
-          <Card className="h-100 glass-card text-white border-0 shadow-lg">
+          <Card className="h-100 glass-card text-white shadow-lg" style={{ boxShadow: '0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(176, 38, 255, 0.05)', border: '1px solid rgba(176, 38, 255, 0.1)', background: 'rgba(11, 14, 20, 0.4)' }}>
             <Card.Body className="p-4 p-md-5">
-              <h2 className="fw-bold mb-4 text-center text-primary">💰 Fee Details</h2>
+              <h2 className="fw-bold mb-4 text-center" style={{fontFamily: 'Outfit', color: 'var(--secondary-accent)'}}>💰 Fee Details</h2>
               <p className="text-muted text-center mb-4">Estimated tuition and fees per semester for the 2026-2027 academic year.</p>
               
               <Table variant="dark" bordered hover className="mb-4">
@@ -99,9 +99,9 @@ function Admissions() {
       {/* FAQ Section */}
       <Row className="mt-5 animate-fade-in-up delay-3">
         <Col>
-          <Card className="glass-card text-white border-0 shadow-lg">
+          <Card className="glass-card text-white shadow-lg" style={{ boxShadow: '0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(255, 51, 102, 0.05)', border: '1px solid rgba(255, 51, 102, 0.1)', background: 'rgba(11, 14, 20, 0.4)' }}>
             <Card.Body className="p-4 p-md-5">
-              <h2 className="fw-bold mb-4 gradient-text text-center">Frequently Asked Questions</h2>
+              <h2 className="fw-bold mb-4 gradient-text text-center" style={{fontFamily: 'Outfit'}}>Frequently Asked Questions</h2>
               
               <Accordion flush className="custom-accordion">
                 <Accordion.Item eventKey="0" className="bg-transparent border-secondary text-white">

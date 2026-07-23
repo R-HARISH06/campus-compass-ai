@@ -150,7 +150,7 @@ function Events() {
 
   return (
     <div className="container mt-5 pt-5">
-      <h1 className="display-5 fw-bold mb-4 gradient-text animate-fade-in-up">
+      <h1 className="display-5 fw-bold mb-4 gradient-text animate-fade-in-up" style={{fontFamily: 'Outfit'}}>
         📅 Upcoming Events
       </h1>
 
@@ -178,27 +178,35 @@ function Events() {
         ) : (
           events.map((event, index) => (
             <div key={event.id} className="col-md-6">
-              <div className={"glass-card h-100 animate-fade-in-up delay-" + ((index % 4) + 1)}>
+              <div 
+                className={"glass-card h-100 animate-fade-in-up delay-" + ((index % 4) + 1)}
+                style={{ 
+                  boxShadow: '0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(0, 240, 255, 0.05)',
+                  border: '1px solid rgba(0, 240, 255, 0.1)'
+                }}
+              >
                 <div className="card-body p-4 d-flex flex-column justify-content-between">
                   <div>
-                    <h2 className="card-title h4 fw-bold">
+                    <h2 className="card-title h4 fw-bold" style={{fontFamily: 'Outfit', color: 'var(--primary-accent)'}}>
                       {event.title}
                     </h2>
-                    <p className="card-text text-muted mt-3">
+                    <p className="card-text text-light mt-3 opacity-75">
                       {event.description}
                     </p>
-                    <p className="mb-1 text-muted">
-                      <strong className="text-light">📍 Venue:</strong> {event.venue}
-                    </p>
-                    <p className="mb-0 text-muted">
-                      <strong className="text-light">📅 Date:</strong> {event.date}
-                    </p>
+                    <div className="d-flex flex-column gap-2 mt-4 p-3 rounded-3" style={{background: 'rgba(11, 14, 20, 0.4)', border: '1px solid rgba(255,255,255,0.05)'}}>
+                      <p className="mb-0 text-muted small">
+                        <strong className="text-light"><i className="bi bi-geo-alt-fill me-1" style={{color: 'var(--secondary-accent)'}}></i> Venue:</strong> {event.venue}
+                      </p>
+                      <p className="mb-0 text-muted small">
+                        <strong className="text-light"><i className="bi bi-calendar-event-fill me-1" style={{color: 'var(--tertiary-accent)'}}></i> Date:</strong> {event.date}
+                      </p>
+                    </div>
                   </div>
                   <div className="mt-4 text-end">
                     {!user ? (
                       <Button
                         variant="primary"
-                        className="px-4 text-white"
+                        className="px-4 text-white shadow-sm fw-bold"
                         onClick={() => navigate('/login')}
                       >
                         Login to Register
@@ -207,6 +215,7 @@ function Events() {
                       <Button
                         variant="outline-danger"
                         className="px-4 fw-bold"
+                        style={{boxShadow: '0 0 10px rgba(255, 51, 102, 0.2)'}}
                         disabled={rsvpLoadingId === event.id}
                         onClick={() => handleCancelRSVP(event)}
                       >
@@ -219,14 +228,14 @@ function Events() {
                     ) : (
                       <Button
                         variant="primary"
-                        className="px-4 text-white"
+                        className="px-4 text-white shadow-sm fw-bold"
                         disabled={rsvpLoadingId === event.id}
                         onClick={() => handleRSVP(event)}
                       >
                         {rsvpLoadingId === event.id ? (
                           <Spinner animation="border" size="sm" />
                         ) : (
-                          "Register"
+                          "Register ✨"
                         )}
                       </Button>
                     )}

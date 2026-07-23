@@ -111,7 +111,7 @@ function AdminDashboard() {
     <Container className="mt-5 pt-5">
       <Row className="mb-4 animate-fade-in-up">
         <Col>
-          <h2 className="fw-bold gradient-text">Admin Dashboard</h2>
+          <h2 className="fw-bold gradient-text" style={{fontFamily: 'Outfit'}}>Admin Dashboard</h2>
           <p className="text-muted">Manage events, clubs, and users.</p>
         </Col>
       </Row>
@@ -125,25 +125,25 @@ function AdminDashboard() {
       {currentUser?.role === "master_admin" && (
         <Row className="g-4 mb-5">
           <Col md={4}>
-            <Card className="h-100 animate-fade-in-up delay-1 border-0 shadow-sm glass-card hover-scale">
+            <Card className="h-100 animate-fade-in-up delay-1 border-0 shadow-sm glass-card hover-scale" style={{ boxShadow: '0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(0, 240, 255, 0.05)', border: '1px solid rgba(0, 240, 255, 0.1)', background: 'rgba(11, 14, 20, 0.4)' }}>
               <Card.Body className="text-center p-4">
-                <h3 className="display-4 fw-bold text-primary">{stats.totalEvents}</h3>
+                <h3 className="display-4 fw-bold" style={{fontFamily: 'Outfit', color: 'var(--primary-accent)'}}>{stats.totalEvents}</h3>
                 <p className="text-white fw-bold mb-0">Total Events</p>
               </Card.Body>
             </Card>
           </Col>
           <Col md={4}>
-            <Card className="h-100 animate-fade-in-up delay-2 border-0 shadow-sm glass-card hover-scale">
+            <Card className="h-100 animate-fade-in-up delay-2 border-0 shadow-sm glass-card hover-scale" style={{ boxShadow: '0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(176, 38, 255, 0.05)', border: '1px solid rgba(176, 38, 255, 0.1)', background: 'rgba(11, 14, 20, 0.4)' }}>
               <Card.Body className="text-center p-4">
-                <h3 className="display-4 fw-bold text-success">{stats.totalClubs}</h3>
+                <h3 className="display-4 fw-bold" style={{fontFamily: 'Outfit', color: 'var(--secondary-accent)'}}>{stats.totalClubs}</h3>
                 <p className="text-white fw-bold mb-0">Active Clubs</p>
               </Card.Body>
             </Card>
           </Col>
           <Col md={4}>
-            <Card className="h-100 animate-fade-in-up delay-3 border-0 shadow-sm glass-card hover-scale">
+            <Card className="h-100 animate-fade-in-up delay-3 border-0 shadow-sm glass-card hover-scale" style={{ boxShadow: '0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(255, 51, 102, 0.05)', border: '1px solid rgba(255, 51, 102, 0.1)', background: 'rgba(11, 14, 20, 0.4)' }}>
               <Card.Body className="text-center p-4">
-                <h3 className="display-4 fw-bold text-warning">{stats.totalUsers}</h3>
+                <h3 className="display-4 fw-bold" style={{fontFamily: 'Outfit', color: 'var(--tertiary-accent)'}}>{stats.totalUsers}</h3>
                 <p className="text-white fw-bold mb-0">Registered Users</p>
               </Card.Body>
             </Card>

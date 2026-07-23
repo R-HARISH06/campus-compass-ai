@@ -51,7 +51,7 @@ function Faculty() {
   return (
     <div className="container mt-5 pt-5">
       <div className="text-center mb-5 animate-fade-in-up">
-        <h1 className="display-5 fw-bold gradient-text">Faculty Directory</h1>
+        <h1 className="display-5 fw-bold gradient-text" style={{fontFamily: 'Outfit'}}>Faculty Directory</h1>
         <p className="lead text-muted">Find your faculty members easily</p>
       </div>
 
@@ -90,15 +90,21 @@ function Faculty() {
         <div className="row g-4">
           {faculty.map((item, index) => (
           <div className="col-md-4" key={index}>
-            <div className={`glass-card text-center h-100 py-4 hover-scale animate-fade-in-up delay-${(index % 4) + 1}`}>
+            <div 
+              className={`glass-card text-center h-100 py-4 hover-scale animate-fade-in-up delay-${(index % 4) + 1}`}
+              style={{ boxShadow: '0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(0, 240, 255, 0.05)', border: '1px solid rgba(0, 240, 255, 0.1)' }}
+            >
               <div className="card-body">
-                <h2 className="card-title h4 fw-bold">{item.name} {item.is_hod ? "⭐ (HOD)" : ""}</h2>
-                <p className="text-muted mb-1"><strong className="text-light">Department:</strong> {item.department}</p>
-                <p className="text-muted mb-1"><strong className="text-light">Designation:</strong> {item.designation}</p>
-                <p className="text-muted mb-3"><strong className="text-light">Qualification:</strong> {item.qualification}</p>
-                <a href={`mailto:${item.email}`} className="text-decoration-none text-primary mb-3 d-block">{item.email}</a>
+                <h2 className="card-title h4 fw-bold" style={{fontFamily: 'Outfit', color: 'var(--primary-accent)'}}>{item.name} {item.is_hod ? <span style={{color: 'var(--tertiary-accent)'}}>⭐ (HOD)</span> : ""}</h2>
+                <div className="mt-4 p-3 rounded-3 text-start" style={{background: 'rgba(11, 14, 20, 0.4)', border: '1px solid rgba(255,255,255,0.05)'}}>
+                  <p className="text-muted mb-2 small"><strong className="text-light">Department:</strong> {item.department}</p>
+                  <p className="text-muted mb-2 small"><strong className="text-light">Designation:</strong> {item.designation}</p>
+                  <p className="text-muted mb-0 small"><strong className="text-light">Qualification:</strong> {item.qualification}</p>
+                </div>
+                <a href={`mailto:${item.email}`} className="text-decoration-none text-info mt-3 mb-4 d-block small">{item.email}</a>
                 <button 
-                  className="btn btn-primary mt-2 w-100"
+                  className="btn btn-primary mt-auto w-100 fw-bold shadow-sm"
+                  style={{background: 'linear-gradient(135deg, var(--secondary-accent), var(--primary-accent))', border: 'none'}}
                   onClick={() => handleShowProfile(item)}
                 >
                   View Profile
@@ -113,14 +119,14 @@ function Faculty() {
       {/* Faculty Profile Modal */}
       <Modal show={showModal} onHide={handleCloseModal} centered contentClassName="glass-card text-white border-secondary">
         <Modal.Header closeButton className="border-secondary" closeVariant="white">
-          <Modal.Title>{selectedFaculty?.name}</Modal.Title>
+          <Modal.Title style={{fontFamily: 'Outfit', color: 'var(--primary-accent)'}}>{selectedFaculty?.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {selectedFaculty && (
             <div>
               <div className="text-center mb-4">
-                <h4 className="fw-bold gradient-text">{selectedFaculty.designation}</h4>
-                <p className="text-muted">{selectedFaculty.department} Department {selectedFaculty.is_hod ? "• HOD" : ""}</p>
+                <h4 className="fw-bold gradient-text" style={{fontFamily: 'Outfit'}}>{selectedFaculty.designation}</h4>
+                <p className="text-muted">{selectedFaculty.department} Department {selectedFaculty.is_hod ? <span style={{color: 'var(--tertiary-accent)'}}>• HOD</span> : ""}</p>
               </div>
               
               <ul className="list-group list-group-flush">

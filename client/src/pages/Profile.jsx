@@ -187,7 +187,7 @@ function Profile() {
 
   return (
     <div className="container mt-5 pt-5">
-      <h1 className="display-5 fw-bold mb-4 gradient-text animate-fade-in-up">
+      <h1 className="display-5 fw-bold mb-4 gradient-text animate-fade-in-up" style={{fontFamily: 'Outfit'}}>
         👤 My Profile
       </h1>
 
@@ -199,7 +199,7 @@ function Profile() {
 
       <div className="row mb-5 animate-fade-in-up delay-1">
         <div className="col-12">
-          <div className="glass-card p-4 text-white position-relative">
+          <div className="glass-card p-4 text-white position-relative" style={{ boxShadow: '0 15px 35px rgba(0,0,0,0.6), inset 0 0 20px rgba(0, 240, 255, 0.05)', border: '1px solid rgba(0, 240, 255, 0.1)', background: 'rgba(11, 14, 20, 0.4)' }}>
             <Button 
               variant="outline-light" 
               size="sm" 
@@ -272,7 +272,7 @@ function Profile() {
       {['student'].includes(fullUser?.role || user?.role) && (
         <div className="row animate-fade-in-up delay-2">
           <div className="col-md-6 mb-4">
-          <h3 className="fw-bold gradient-text">Registered Events</h3>
+          <h3 className="fw-bold gradient-text" style={{fontFamily: 'Outfit'}}>Registered Events</h3>
           {rsvpedEvents.length === 0 ? (
             <p className="text-muted">You haven't RSVPed to any events yet.</p>
           ) : (
@@ -298,7 +298,7 @@ function Profile() {
         </div>
 
         <div className="col-md-6 mb-4">
-          <h3 className="fw-bold gradient-text">Joined Clubs</h3>
+          <h3 className="fw-bold gradient-text" style={{fontFamily: 'Outfit'}}>Joined Clubs</h3>
           {clubs.length === 0 ? (
             <p className="text-muted">You haven't joined any clubs yet.</p>
           ) : (
@@ -328,7 +328,7 @@ function Profile() {
       {/* Edit Profile Modal */}
       <Modal show={showEditModal} onHide={() => setShowEditModal(false)} centered contentClassName="glass-card text-white border-secondary">
         <Modal.Header closeButton className="border-secondary" closeVariant="white">
-          <Modal.Title className="text-warning">Edit Profile</Modal.Title>
+          <Modal.Title className="text-warning" style={{fontFamily: 'Outfit', color: 'var(--primary-accent)'}}>Edit Profile</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleProfileUpdate}>
