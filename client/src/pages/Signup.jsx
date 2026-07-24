@@ -22,7 +22,7 @@ function Signup() {
     e.preventDefault();
     setError("");
     
-    if (role !== "student" && adminCode !== "CAMPUS2026") {
+    if (role !== "student" && adminCode !== "NEW_ADMIN_SECRET_2026") {
       setError("Invalid Secret Admin Code. Please check the code or sign up as a Student.");
       return;
     }
@@ -33,7 +33,7 @@ function Signup() {
       const res = await fetch(`${API_BASE_URL}/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password, department, year: parseInt(year) || null, role }),
+        body: JSON.stringify({ name, email, password, department, year: parseInt(year) || null, role, adminCode }),
       });
 
       const data = await res.json();

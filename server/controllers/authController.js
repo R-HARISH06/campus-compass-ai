@@ -21,6 +21,14 @@ const register = async (req, res) => {
   const interests = typeof body.interests === "string" ? body.interests.trim() : null;
   const phone = typeof body.phone === "string" ? body.phone.trim() : null;
   const role = typeof body.role === "string" && body.role ? body.role : "student";
+  const adminCode = typeof body.adminCode === "string" ? body.adminCode.trim() : "";
+
+  if (role !== "student") {
+    const expectedAdminCode = process.env.ADMIN_SECRET_CODE || "NEW_ADMIN_SECRET_2026";
+    if (adminCode !== expectedAdminCode) {
+      return res.status(403).json({ message: "Invalid Secret Admin Code provided." });
+    }
+  }
 
   if (!name || !email || !password) {
     return res.status(400).json({ message: "Name, email, and password are required." });
