@@ -16,7 +16,7 @@ function Footer() {
         <Row className="align-items-center mb-4">
           <Col md={6} className="text-center text-md-start mb-3 mb-md-0">
             <h4 className="fw-bold" style={{ color: 'var(--text-main)' }}>
-              <span className="fs-4 me-2">🧭</span>
+              <img src="/favicon.png" alt="Campus Compass Logo" width="28" height="28" className="me-2 rounded-circle shadow-sm" />
               Campus Compass AI
             </h4>
             <p className="text-muted mt-2 mb-0" style={{ fontSize: '0.95rem' }}>
