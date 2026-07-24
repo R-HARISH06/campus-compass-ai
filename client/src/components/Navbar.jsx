@@ -31,7 +31,7 @@ function Navbar() {
       <Container>
         <BNavbar.Toggle aria-controls="basic-navbar-nav" className="me-2" />
         <BNavbar.Brand as={Link} to="/" className="fw-bold fs-4 d-flex align-items-center me-auto">
-          <span className="fs-3 me-2">🧭</span> Campus Compass AI
+          <img src="/favicon.png" alt="Campus Compass Logo" width="32" height="32" className="me-2 rounded-circle shadow-sm" /> Campus Compass AI
         </BNavbar.Brand>
         <BNavbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto align-items-center">
